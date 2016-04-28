@@ -1,4 +1,4 @@
-# Steps to prepare your environment
+#Steps to prepare your environment
 
 This project aims to validate if your dev environment is ready!
 To prepare your laptop, you need to install three things : 
@@ -7,15 +7,14 @@ To prepare your laptop, you need to install three things :
  * SBT
  * Setup your favorite IDE to work with Lagom framework
 
-## Install Java 8
+##Install Java 8
 if you come to this nigthClazz, I am sure that it is trivial for you to install (or update) your JDK ;)
 
-## Install SBT
+##Install SBT
 
 To install SBT follow the guide [here](http://www.scala-sbt.org/release/docs/Setup.html)
 
-## run project
-To download all dependencies at least once (to be autonomous from internet connection the D-day) run the following command from **lagom-java's** directory.
+Run project to download all dependencies at least once (to be autonomous from internet connection the D-day) run the following command from **lagom-java's** directory.
 
     sbt runAll
 
