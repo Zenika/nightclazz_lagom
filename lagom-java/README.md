@@ -1,4 +1,4 @@
-# Run to validate your setup
+# Steps to prepare your environment
 
 This project aims to validate if your dev environment is ready!
 To prepare your laptop, you need to install three things : 
