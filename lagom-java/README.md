@@ -1,6 +1,6 @@
 #Steps to prepare your environment
 
-This project aims to validate if your dev environment is ready!
+This project aims to validate if your dev environment is ready! Not necessary to look at the code, we will dive into it during the nightClazz.
 To prepare your laptop, you need to install three things : 
  
  * java 8
