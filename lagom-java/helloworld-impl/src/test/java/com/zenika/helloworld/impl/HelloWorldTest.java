@@ -1,4 +1,4 @@
-package sample.helloworld.impl;
+package com.zenika.helloworld.impl;
 
 import static org.junit.Assert.assertEquals;
 
