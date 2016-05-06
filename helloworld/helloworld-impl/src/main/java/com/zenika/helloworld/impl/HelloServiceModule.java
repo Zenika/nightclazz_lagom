@@ -13,6 +13,9 @@ import com.zenika.helloworld.api.HelloService;
 public class HelloServiceModule extends AbstractModule implements ServiceGuiceSupport {
   @Override
   protected void configure() {
-    bindServices(serviceBinding(HelloService.class, HelloServiceImpl.class));
+    /*
+     *Todo :
+     * Do the binding between API and implementation
+     */
   }
 }

@@ -21,13 +21,22 @@ public interface HelloService extends Service {
     /**
      * Example: curl http://localhost:9000/api/hello/Alice
      */
-    ServiceCall<String, NotUsed, String> hello();
+
+    /*
+    * Todo :
+    * Give the right type for id and response
+    * */
+    ServiceCall<NotUsed, NotUsed, NotUsed> hello();
 
 
     @Override
     default Descriptor descriptor() {
-        return named("helloservice").with(
-                restCall(Method.GET, "/api/hello/:id", hello())
-        ).withAutoAcl(true);
+        return
+        /*
+         *   Todo :
+         *   Give name to the service
+         *   Describe route for hello Service with the right HTTP Verb
+         *   /!\ don't forget ACL.
+        */
     }
 }

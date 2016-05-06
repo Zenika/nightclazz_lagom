@@ -3,6 +3,9 @@ organization in ThisBuild := "com.zenika.helloworld"
 // the Scala version that will be used for cross-compiled libraries
 scalaVersion in ThisBuild := "2.11.7"
 
+//Cassandra might be unactivate for this TP
+lagomCassandraEnabled in ThisBuild := false
+
 lazy val helloworldApi = project("helloworld-api")
   .settings(
     version := "1.0-SNAPSHOT",
@@ -14,14 +17,13 @@ lazy val helloworldImpl = project("helloworld-impl")
   .settings(
     version := "1.0-SNAPSHOT",
     libraryDependencies ++= Seq(
-      lagomJavadslPersistence,
       lagomJavadslTestKit
     )
   )
   .settings(lagomForkedTestSettings: _*)
   .dependsOn(helloworldApi)
 
-lagomCassandraEnabled in ThisBuild := false
+
 
 // See https://github.com/FasterXML/jackson-module-parameter-names
 lazy val jacksonParameterNamesJavacSettings = Seq(
