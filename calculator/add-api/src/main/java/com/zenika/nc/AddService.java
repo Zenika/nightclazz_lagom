@@ -4,11 +4,9 @@ import akka.NotUsed;
 import com.lightbend.lagom.javadsl.api.Descriptor;
 import com.lightbend.lagom.javadsl.api.Service;
 import com.lightbend.lagom.javadsl.api.ServiceCall;
-import com.lightbend.lagom.javadsl.api.deser.IdSerializers;
-
-import java.util.Arrays;
 
 import static com.lightbend.lagom.javadsl.api.Service.named;
+import static com.lightbend.lagom.javadsl.api.Service.namedCall;
 import static com.lightbend.lagom.javadsl.api.Service.pathCall;
 
 /**
@@ -16,15 +14,17 @@ import static com.lightbend.lagom.javadsl.api.Service.pathCall;
  */
 public interface AddService extends Service {
 
-    ServiceCall<Operandes, NotUsed, Integer> addOp();
+    ServiceCall<NotUsed, Operandes, Integer> addOp();
+
+    ServiceCall<NotUsed, NotUsed, String> hello();
 
     @Override
     default Descriptor descriptor() {
         return named("add")
-                .with(pathCall("/api/op/:op1/add/:op2", addOp()))
-                .with(Operandes.class, IdSerializers.create("Operandes", Operandes::of, (Operandes id) -> {
-                    return Arrays.asList(id.getOp1(), id.getOp2());
-                })).withAutoAcl(true);
+                .with(
+                        pathCall("/api/op/add/", addOp()),
+                        namedCall("/api/hello", hello())
+                ).withAutoAcl(true);
 
 
     }

@@ -1,4 +1,4 @@
-organization in ThisBuild := "sample.helloworld"
+organization in ThisBuild := "com.zenika.calculator"
 
 // the Scala version that will be used for cross-compiled libraries
 scalaVersion in ThisBuild := "2.11.7"
@@ -96,12 +96,11 @@ lazy val dispatcherImpl = project("dispatcher-impl")
   .settings(lagomForkedTestSettings: _*)
   .dependsOn(dispatcherApi)
 
-/*lazy val frontEnd = project("front-end")
-  .enablePlugins( LagomPlay)
+lazy val frontEnd = project("front-end")
+  .enablePlugins(PlayJava, LagomPlay)
   .settings(
     version := "1.0-SNAPSHOT"
-
-  )*/
+  )
 
 
 def project(id: String) = Project(id, base = file(id))
@@ -114,5 +113,4 @@ def project(id: String) = Project(id, base = file(id))
 lazy val jacksonParameterNamesJavacSettings = Seq(
   javacOptions in compile += "-parameters"
 )
-
 

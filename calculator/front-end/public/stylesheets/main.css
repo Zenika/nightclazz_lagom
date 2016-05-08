@@ -1,0 +1,11 @@
+.omb {
+    box-shadow: 4px 3px 1px #aaa;
+    border: 1px solid #000;
+    margin: 1px 14px 1px 1px;
+}
+
+#result.omb {
+
+    margin: 1px 14px 16px 1px;
+}
+

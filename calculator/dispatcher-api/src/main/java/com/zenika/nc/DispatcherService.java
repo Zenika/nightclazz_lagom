@@ -16,15 +16,15 @@ import static com.lightbend.lagom.javadsl.api.Service.pathCall;
  */
 public interface DispatcherService extends Service {
 
-    ServiceCall<Operandes, NotUsed, Integer> addOp();
+    ServiceCall<String, Operandes, Integer> compute();
 
     @Override
     default Descriptor descriptor() {
         return named("dispatcher")
-                .with(pathCall("/api/op/:op1/mult/:op2", addOp()))
-                .with(Operandes.class, IdSerializers.create("Operandes", Operandes::of, (Operandes id) -> {
-                    return Arrays.asList(id.getOp1(), id.getOp2());
-                })).withAutoAcl(true);
+                .with(pathCall("/api/calculator/:op", compute())).withAutoAcl(true);
+                //.with(Operandes.class, IdSerializers.create("Operandes", Operandes::of, (Operandes id) -> {
+                    //return Arrays.asList(id.getOp1(), id.getOp2());
+                //}))
 
 
     }

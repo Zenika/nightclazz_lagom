@@ -16,8 +16,5 @@ public class Application extends Controller {
     return ok(views.html.index.render());
   }
 
-  public Result circuitBreaker() {
-    return ok(views.html.circuitbreaker.render());
-  }
 
 }

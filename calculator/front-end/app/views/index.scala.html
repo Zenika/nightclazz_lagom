@@ -1,18 +1,141 @@
 <html>
     <head>
-        <title>Chirper</title>
+        <title>Calculator</title>
         <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="@routes.Assets.versioned("lib/normalize.css/normalize.css")"/>
-        <link rel="stylesheet" href="@routes.Assets.versioned("lib/foundation/css/foundation.min.css")"/>
-        <link rel="stylesheet" href="@routes.Assets.versioned("main.css")"/>
+        <script type="text/javascript" src="assets/javascripts/vuejs/vue.min.js"></script>
+        <script type="text/javascript" src="assets/javascripts/jquery/jquery-2.2.3.min.js"></script>
+        <script type="text/javascript" src="assets/javascripts/bootstrap/bootstrap.js"></script>
+        <script type="text/javascript" src="assets/javascripts/underscore/underscore.js"></script>
+        <link rel="stylesheet" href="assets/stylesheets/bootstrap/bootstrap.min.css"/>
+        <link rel="stylesheet" href="assets/stylesheets/bootstrap/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="assets/stylesheets/main.css"/>
+        <script type="application/javascript">
+
+
+             $(function () {
+                 $(".operand").click(function () {
+                     $("#display").val(checkZero($("#display").val()) + $(this).text());
+                 })
+
+
+                 $(".operator").click(function () {
+
+                     var operator = $(this).text();
+                     if (checkDoublon(operator)) {
+                         var op1 = $("#display").val();
+                         $("#display").val(checkZero(op1) + operator);
+                         addJson("op1", op1);
+                         addJson("operateur", operator);
+                     }
+                     //console.log(getjson());
+
+
+                 })
+
+
+                 $("#equal").click(function () {
+                     addJson("op2", getOp2($("#display").val()));
+                     //console.log(getjson());
+                     $.post(
+                             "/api/calculator/add",
+                             JSON.stringify(getjson()),
+                             function (data, status) {
+                                 console.log(status + " " + data);
+                             },
+                             "json"
+                     )
+                 })
+
+                 $("#del").click(function () {
+                     $("#display").val("0");
+                     $("body").removeData();
+                 });
+
+             });
+
+
+             function checkZero(val) {
+                 if (val == "0") {
+                     return ""
+                 } else {
+                     return val;
+                 }
+             }
+
+             function checkDoublon(op) {
+                 var currentDisp = $("#display").val();
+                 return (currentDisp.indexOf(op) == -1) && (_.intersection(_.toArray(currentDisp), ["*", "/", "+", "-"]).length == 0);
+             }
+
+             function getOp2(val) {
+                 if (val != "") {
+                     return val.split($("body").data("operateur"))[1];
+                 } else {
+                     return "";
+                 }
+             }
+
+             function getjson() {
+                 return $("body").data();
+             }
+             function addJson(key, val) {
+                 return $("body").data(key, val);
+             }
+
+        </script>
     </head>
     <body>
-        <div id="content"></div>
-        <script type="text/javascript" src="@routes.Assets.versioned("lib/react/react.js")"></script>
-        <script type="text/javascript" src="@routes.Assets.versioned("lib/react/react-dom.js")"></script>
-        <script type="text/javascript" src="@routes.Assets.versioned("lib/react-router/ReactRouter.js")"></script>
-        <script type="text/javascript" src="https://npmcdn.com/history@@1.17.0/umd/History.min.js"></script>
-        <script type="text/javascript" src="@routes.Assets.versioned("lib/jquery/jquery.js")"></script>
-        <script type="text/javascript" src="@routes.Assets.versioned("main.js")"></script>
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Calculator</h1>
+                </div>
+                <div class="col-md-2">
+                    <h1>NightClazz Hand's on LAGOM</h1>
+                </div>
+                <div class="col-md-4">
+                    @*<img src="img/lagom.png">*@
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-2">&nbsp;</div>
+                <div class="col-xs-8 " id="result"><h1><input id="display" type="text" value="0"/></h1></div>
+                <div class="col-xs-2">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">&nbsp;</div>
+                <div class="col-xs-2 omb operand"><h1>7</h1></div>
+                <div class="col-xs-2 omb operand"><h1>8</h1></div>
+                <div class="col-xs-2 omb operand"><h1>9</h1></div>
+                <div class="col-xs-2 omb operator"><h1>+</h1></div>
+                <div class="col-xs-2">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">&nbsp;</div>
+                <div class="col-xs-2 omb operand"><h1>4</h1></div>
+                <div class="col-xs-2 omb operand"><h1>5</h1></div>
+                <div class="col-xs-2 omb operand"><h1>6</h1></div>
+                <div class="col-xs-2 omb operator"><h1>-</h1></div>
+                <div class="col-xs-2 ">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">&nbsp;</div>
+                <div class="col-xs-2 omb operand"><h1>1</h1></div>
+                <div class="col-xs-2 omb operand"><h1>2</h1></div>
+                <div class="col-xs-2 omb operand"><h1>3</h1></div>
+                <div class="col-xs-2 omb operator"><h1>/</h1></div>
+                <div class="col-xs-2">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">&nbsp;</div>
+                <div class="col-xs-2 omb" id="del"><h1>Del</h1></div>
+                <div class="col-xs-2 omb operand"><h1>0</h1></div>
+                <div class="col-xs-2 omb" id="equal"><h1>=</h1></div>
+                <div class="col-xs-2 omb operator"><h1>*</h1></div>
+            </div>
+        </div>
     </body>
 </html>
