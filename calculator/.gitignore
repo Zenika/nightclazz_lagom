@@ -2,3 +2,4 @@
 */.idea
 .idea
 project/project/target/
+*.log
