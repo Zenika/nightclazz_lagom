@@ -1,3 +1,5 @@
+import play.sbt.PlayImport._
+
 organization in ThisBuild := "com.zenika.calculator"
 
 // the Scala version that will be used for cross-compiled libraries
@@ -78,11 +80,15 @@ lazy val multImpl = project("mult-impl")
   .settings(lagomForkedTestSettings: _*)
   .dependsOn(multApi)
 
+//lagomUnmanagedServices in ThisBuild := Map("hi" -> "http://localhost:7001/api/hello")
+
+
 lazy val dispatcherApi = project("dispatcher-api")
   .settings(
     version := "1.0-SNAPSHOT",
     libraryDependencies += lagomJavadslApi,
-    libraryDependencies += lagomJavadslImmutables
+    libraryDependencies += lagomJavadslImmutables,
+    libraryDependencies += javaWs
   )
 
 lazy val dispatcherImpl = project("dispatcher-impl")
@@ -90,11 +96,12 @@ lazy val dispatcherImpl = project("dispatcher-impl")
   .settings(
     version := "1.0-SNAPSHOT",
     libraryDependencies ++= Seq(
-      lagomJavadslTestKit
+      lagomJavadslTestKit,
+      javaWs
     )
   )
   .settings(lagomForkedTestSettings: _*)
-  .dependsOn(dispatcherApi)
+  .dependsOn(dispatcherApi, addApi)
 
 lazy val frontEnd = project("front-end")
   .enablePlugins(PlayJava, LagomPlay)

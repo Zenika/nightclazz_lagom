@@ -10,15 +10,11 @@ import static java.util.concurrent.CompletableFuture.completedFuture;
  */
 public class AddServiceImpl implements AddService {
     @Override
-    public ServiceCall<NotUsed, Operandes, Integer> addOp() {
-        return (id, operandes) -> {
-            System.out.println("name " + operandes.toString());
-            return completedFuture(operandes.getOp1() + operandes.getOp2());
-        };
+    public ServiceCall<NotUsed, NotUsed, Integer> op() {
+        //return (id, operandes) -> completedFuture(operandes.getOp1() + operandes.getOp2());
+        return (id, operandes) -> completedFuture(1 + 1);
+
     }
 
-    @Override
-    public ServiceCall<NotUsed, NotUsed, String> hello() {
-        return (id, operandes) -> completedFuture("Hello");
-    }
+
 }

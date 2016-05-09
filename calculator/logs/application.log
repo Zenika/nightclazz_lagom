@@ -30,3 +30,18 @@ com.lightbend.lagom.discovery.ServiceAlreadyRegistered: A service with the same 
 	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) [scala-library-2.11.7.jar:na]
 	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) [scala-library-2.11.7.jar:na]
 	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) [scala-library-2.11.7.jar:na]
+2016-05-09 14:43:18,338 [ERROR] from lagom-service-registry in application-akka.actor.default-dispatcher-4 - Exception in RestCallId{method=PUT, pathPattern='/services/:id'}
+com.lightbend.lagom.discovery.ServiceAlreadyRegistered: A service with the same name=[add] was already registered
+	at com.lightbend.lagom.discovery.ServiceRegistryActor$$anonfun$receive$1.applyOrElse(ServiceRegistryActor.scala:53) ~[lagom-service-locator_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at akka.actor.Actor$class.aroundReceive(Actor.scala:480) ~[akka-actor_2.11-2.4.2.jar:na]
+	at com.lightbend.lagom.discovery.ServiceRegistryActor.aroundReceive(ServiceRegistryActor.scala:31) ~[lagom-service-locator_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:526) ~[akka-actor_2.11-2.4.2.jar:na]
+	at akka.actor.ActorCell.invoke(ActorCell.scala:495) ~[akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:257) ~[akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.Mailbox.run(Mailbox.scala:224) ~[akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:234) ~[akka-actor_2.11-2.4.2.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) [scala-library-2.11.7.jar:na]
+2016-05-09 14:48:01,115 [ERROR] from play.core.server.NettyServer in pool-5-thread-3 - Failed to listen for HTTP on /0.0.0.0:8000!

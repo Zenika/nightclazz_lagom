@@ -11,7 +11,7 @@ import com.lightbend.lagom.javadsl.api.ServiceCall;
 import com.lightbend.lagom.javadsl.api.transport.Method;
 
 /**
- * The hello service interface.
+ * The hello service interface. 
  * <p>
  * This describes everything that Lagom needs to know about how to serve and
  * consume the HelloService.

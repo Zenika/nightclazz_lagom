@@ -16,15 +16,12 @@ import static com.lightbend.lagom.javadsl.api.Service.pathCall;
  */
 public interface DivService extends Service {
 
-    ServiceCall<Operandes, NotUsed, Integer> addOp();
+    ServiceCall< NotUsed,Operandes, Integer> op();
 
     @Override
     default Descriptor descriptor() {
         return named("div")
-                .with(pathCall("/api/op/:op1/div/:op2", addOp()))
-                .with(Operandes.class, IdSerializers.create("Operandes", Operandes::of, (Operandes id) -> {
-                    return Arrays.asList(id.getOp1(), id.getOp2());
-                })).withAutoAcl(true);
+                .with(pathCall("/api/op/div", op())).withAutoAcl(true);
 
 
     }

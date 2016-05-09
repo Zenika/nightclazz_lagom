@@ -22,10 +22,5 @@ public interface DispatcherService extends Service {
     default Descriptor descriptor() {
         return named("dispatcher")
                 .with(pathCall("/api/calculator/:op", compute())).withAutoAcl(true);
-                //.with(Operandes.class, IdSerializers.create("Operandes", Operandes::of, (Operandes id) -> {
-                    //return Arrays.asList(id.getOp1(), id.getOp2());
-                //}))
-
-
     }
 }

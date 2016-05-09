@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="assets/stylesheets/main.css"/>
         <script type="application/javascript">
 
-
+            var mappingOperator = {"*":"mult","/":"div","+":"add","-":"min"}
              $(function () {
                  $(".operand").click(function () {
                      $("#display").val(checkZero($("#display").val()) + $(this).text());
@@ -27,17 +27,16 @@
                          addJson("op1", op1);
                          addJson("operateur", operator);
                      }
-                     //console.log(getjson());
 
 
-                 })
+
+                 });
 
 
                  $("#equal").click(function () {
                      addJson("op2", getOp2($("#display").val()));
-                     //console.log(getjson());
                      $.post(
-                             "/api/calculator/add",
+                             "/api/calculator/" + mappingOperator[getjson()["operateur"]],
                              JSON.stringify(getjson()),
                              function (data, status) {
                                  console.log(status + " " + data);

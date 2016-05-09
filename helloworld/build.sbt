@@ -8,6 +8,10 @@ lazy val helloworldApi = project("helloworld-api")
     version := "1.0-SNAPSHOT",
     libraryDependencies += lagomJavadslApi
   )
+  
+  lagomServiceLocatorPort in ThisBuild := 7000
+lagomServiceGatewayPort in ThisBuild := 7001
+
 
 lazy val helloworldImpl = project("helloworld-impl")
   .enablePlugins(LagomJava)

@@ -1,5 +1,8 @@
 */target
 */.idea
 .idea
+<<<<<<< Updated upstream
 project/project/target/
+=======
+>>>>>>> Stashed changes
 *.log

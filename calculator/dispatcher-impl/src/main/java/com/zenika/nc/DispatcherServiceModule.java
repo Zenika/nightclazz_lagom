@@ -13,5 +13,6 @@ public class DispatcherServiceModule
     @Override
     protected void configure() {
         bindServices(serviceBinding(DispatcherService.class, DispatcherServiceImpl.class));
+        bindClient(AddService.class);
     }
 }
