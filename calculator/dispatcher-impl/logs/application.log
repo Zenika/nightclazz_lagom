@@ -1,19 +1,36 @@
-2016-05-09 21:26:41,405 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryModule in ForkJoinPool-6-worker-1 - Running in Dev mode. The com.lightbend.lagom.javadsl.api.ServiceLocator interface was bound to an implementation that will query the embedded Service Locator. This is fine to use only during development.
-2016-05-09 21:26:42,084 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in ForkJoinPool-6-worker-1 - Starting application default Akka system: dispatcher-impl-application
-2016-05-09 21:26:42,356 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-5 - Registered Jackson module [com.fasterxml.jackson.module.paramnames.ParameterNamesModule]
-2016-05-09 21:26:42,364 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-5 - Registered Jackson module [com.fasterxml.jackson.datatype.jdk8.Jdk8Module]
-2016-05-09 21:26:42,365 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-5 - Registered Jackson module [com.fasterxml.jackson.datatype.jsr310.JavaTimeModule]
-2016-05-09 21:26:42,371 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-5 - Registered Jackson module [com.fasterxml.jackson.datatype.pcollections.PCollectionsModule]
-2016-05-09 21:26:42,401 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-5 - Registered Jackson module [com.fasterxml.jackson.datatype.guava.GuavaModule]
-2016-05-09 21:26:42,991 [INFO] from play.api.Play in ForkJoinPool-6-worker-1 - Application started (Dev)
-2016-05-09 21:26:56,648 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
-2016-05-09 21:26:56,692 [ERROR] from dispatcher in dispatcher-impl-application-akka.actor.default-dispatcher-5 - Exception in PathCallId{pathPattern='/api/calculator/:op'}
-java.lang.IllegalArgumentException: min
-	at com.zenika.nc.DispatcherServiceImpl.getService(DispatcherServiceImpl.java:50) ~[classes/:na]
-	at com.zenika.nc.DispatcherServiceImpl.lambda$compute$0(DispatcherServiceImpl.java:30) ~[classes/:na]
-	at com.lightbend.lagom.javadsl.api.ServiceCall.lambda$handleResponseHeader$1(ServiceCall.java:102) ~[lagom-javadsl-api_2.11-1.0.0-M1.jar:1.0.0-M1]
-	at com.lightbend.lagom.internal.server.SingleServiceRouter.invokeServiceCall(ServerBuilder.scala:509) ~[lagom-javadsl-server_2.11-1.0.0-M1.jar:1.0.0-M1]
-	at com.lightbend.lagom.internal.server.SingleServiceRouter$$anonfun$com$lightbend$lagom$internal$server$SingleServiceRouter$$handleServiceCall$1.apply(ServerBuilder.scala:259) ~[lagom-javadsl-server_2.11-1.0.0-M1.jar:1.0.0-M1]
+2016-05-09 22:09:02,667 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryModule in ForkJoinPool-6-worker-1 - Running in Dev mode. The com.lightbend.lagom.javadsl.api.ServiceLocator interface was bound to an implementation that will query the embedded Service Locator. This is fine to use only during development.
+2016-05-09 22:09:03,455 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in ForkJoinPool-6-worker-1 - Starting application default Akka system: dispatcher-impl-application
+2016-05-09 22:09:03,669 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.module.paramnames.ParameterNamesModule]
+2016-05-09 22:09:03,676 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.jdk8.Jdk8Module]
+2016-05-09 22:09:03,677 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.jsr310.JavaTimeModule]
+2016-05-09 22:09:03,682 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.pcollections.PCollectionsModule]
+2016-05-09 22:09:03,696 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.guava.GuavaModule]
+2016-05-09 22:09:04,189 [INFO] from play.api.Play in ForkJoinPool-6-worker-1 - Application started (Dev)
+2016-05-09 22:09:19,297 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 22:09:19,344 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Locating service name=[min] ...
+2016-05-09 22:09:19,364 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-15 - Service name=[min] can be reached at address=[]
+2016-05-09 22:09:30,749 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 22:09:30,754 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Locating service name=[add] ...
+2016-05-09 22:09:30,761 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-9 - Service name=[add] can be reached at address=[]
+2016-05-09 22:14:06,442 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 22:14:06,446 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-6 - Locating service name=[add] ...
+2016-05-09 22:14:06,462 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-11 - Service name=[add] can be reached at address=[]
+2016-05-09 22:14:39,391 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 22:14:39,395 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-8 - Locating service name=[add] ...
+2016-05-09 22:14:39,400 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-15 - Service name=[add] can be reached at address=[]
+2016-05-09 22:15:43,403 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 22:15:43,407 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-10 - Locating service name=[add] ...
+2016-05-09 22:15:43,413 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-11 - Service name=[add] can be reached at address=[]
+2016-05-09 22:16:22,320 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 22:16:22,323 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-12 - Locating service name=[add] ...
+2016-05-09 22:16:22,329 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-3 - Service name=[add] can be reached at address=[]
+2016-05-09 22:16:34,665 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 22:16:34,680 [ERROR] from dispatcher in dispatcher-impl-application-akka.actor.default-dispatcher-12 - Exception in PathCallId{pathPattern='/api/calculator/:op'}
+com.lightbend.lagom.javadsl.api.deser.DeserializationException: Can not construct instance of java.lang.Integer from String value ("[object Object]36"): not a valid Integer value
+ at [Source: akka.util.ByteIterator$ByteArrayIterator$$anon$1@716719ea; line: 1, column: 8] (through reference chain: com.zenika.nc.Json["op1"])
+	at com.lightbend.lagom.javadsl.jackson.JacksonSerializerFactory$JacksonMessageSerializer$JacksonDeserializer.deserialize(JacksonSerializerFactory.java:128) ~[lagom-javadsl-jackson_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.javadsl.jackson.JacksonSerializerFactory$JacksonMessageSerializer$JacksonDeserializer.deserialize(JacksonSerializerFactory.java:116) ~[lagom-javadsl-jackson_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.internal.server.SingleServiceRouter$$anonfun$com$lightbend$lagom$internal$server$SingleServiceRouter$$handleServiceCall$1.apply(ServerBuilder.scala:256) ~[lagom-javadsl-server_2.11-1.0.0-M1.jar:1.0.0-M1]
 	at com.lightbend.lagom.internal.server.SingleServiceRouter$$anonfun$com$lightbend$lagom$internal$server$SingleServiceRouter$$handleServiceCall$1.apply(ServerBuilder.scala:247) ~[lagom-javadsl-server_2.11-1.0.0-M1.jar:1.0.0-M1]
 	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:251) ~[scala-library-2.11.7.jar:na]
 	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:249) ~[scala-library-2.11.7.jar:na]
@@ -30,28 +47,128 @@ java.lang.IllegalArgumentException: min
 	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) [scala-library-2.11.7.jar:na]
 	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) [scala-library-2.11.7.jar:na]
 	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) [scala-library-2.11.7.jar:na]
-2016-05-09 21:27:46,367 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in dispatcher-impl-application-akka.actor.default-dispatcher-6 - Shutdown application default Akka system: dispatcher-impl-application
-2016-05-09 21:27:46,461 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryModule in dispatcher-impl-application-akka.actor.default-dispatcher-4 - Running in Dev mode. The com.lightbend.lagom.javadsl.api.ServiceLocator interface was bound to an implementation that will query the embedded Service Locator. This is fine to use only during development.
-2016-05-09 21:27:46,535 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in dispatcher-impl-application-akka.actor.default-dispatcher-4 - Starting application default Akka system: dispatcher-impl-application
-2016-05-09 21:27:46,536 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.module.paramnames.ParameterNamesModule]
-2016-05-09 21:27:46,537 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.jdk8.Jdk8Module]
-2016-05-09 21:27:46,537 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.jsr310.JavaTimeModule]
-2016-05-09 21:27:46,538 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.pcollections.PCollectionsModule]
-2016-05-09 21:27:46,538 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.guava.GuavaModule]
-2016-05-09 21:27:46,612 [INFO] from play.api.Play in dispatcher-impl-application-akka.actor.default-dispatcher-4 - Application started (Dev)
-2016-05-09 21:27:52,144 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
-2016-05-09 21:27:52,149 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-4 - Locating service name=[min] ...
-2016-05-09 21:27:52,167 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-15 - Service name=[min] can be reached at address=[]
-2016-05-09 21:27:57,188 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
-2016-05-09 21:27:57,192 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Locating service name=[min] ...
-2016-05-09 21:27:57,198 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-7 - Service name=[min] can be reached at address=[]
-2016-05-09 21:28:06,825 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
-2016-05-09 21:28:06,829 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-2 - Locating service name=[mult] ...
-2016-05-09 21:28:06,835 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-9 - Service name=[mult] can be reached at address=[]
-2016-05-09 21:28:16,506 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
-2016-05-09 21:28:16,510 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-4 - Locating service name=[div] ...
-2016-05-09 21:28:16,518 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-15 - Service name=[div] can be reached at address=[]
-2016-05-09 21:28:24,548 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
-2016-05-09 21:28:24,552 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-4 - Locating service name=[add] ...
-2016-05-09 21:28:24,558 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-9 - Service name=[add] can be reached at address=[]
-2016-05-09 21:28:35,456 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in dispatcher-impl-application-akka.actor.default-dispatcher-4 - Shutdown application default Akka system: dispatcher-impl-application
+Caused by: com.fasterxml.jackson.databind.exc.InvalidFormatException: Can not construct instance of java.lang.Integer from String value ("[object Object]36"): not a valid Integer value
+ at [Source: akka.util.ByteIterator$ByteArrayIterator$$anon$1@716719ea; line: 1, column: 8] (through reference chain: com.zenika.nc.Json["op1"])
+	at com.fasterxml.jackson.databind.exc.InvalidFormatException.from(InvalidFormatException.java:74) ~[jackson-databind-2.7.2.jar:2.7.2]
+	at com.fasterxml.jackson.databind.DeserializationContext.weirdStringException(DeserializationContext.java:923) ~[jackson-databind-2.7.2.jar:2.7.2]
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer._parseInteger(StdDeserializer.java:444) ~[jackson-databind-2.7.2.jar:2.7.2]
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:315) ~[jackson-databind-2.7.2.jar:2.7.2]
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:293) ~[jackson-databind-2.7.2.jar:2.7.2]
+	at com.fasterxml.jackson.databind.deser.SettableBeanProperty.deserialize(SettableBeanProperty.java:490) ~[jackson-databind-2.7.2.jar:2.7.2]
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:95) ~[jackson-databind-2.7.2.jar:2.7.2]
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:260) ~[jackson-databind-2.7.2.jar:2.7.2]
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer._deserializeOther(BeanDeserializer.java:163) ~[jackson-databind-2.7.2.jar:2.7.2]
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:135) ~[jackson-databind-2.7.2.jar:2.7.2]
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.deserializeFromObjectUsingNonDefault(BeanDeserializerBase.java:1119) ~[jackson-databind-2.7.2.jar:2.7.2]
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:298) ~[jackson-databind-2.7.2.jar:2.7.2]
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:133) ~[jackson-databind-2.7.2.jar:2.7.2]
+	at com.fasterxml.jackson.databind.ObjectReader._bindAndClose(ObjectReader.java:1575) ~[jackson-databind-2.7.2.jar:2.7.2]
+	at com.fasterxml.jackson.databind.ObjectReader.readValue(ObjectReader.java:1166) ~[jackson-databind-2.7.2.jar:2.7.2]
+	at com.lightbend.lagom.javadsl.jackson.JacksonSerializerFactory$JacksonMessageSerializer$JacksonDeserializer.deserialize(JacksonSerializerFactory.java:126) ~[lagom-javadsl-jackson_2.11-1.0.0-M1.jar:1.0.0-M1]
+	... 18 common frames omitted
+2016-05-09 22:17:50,996 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 22:17:50,999 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-15 - Locating service name=[add] ...
+2016-05-09 22:17:51,005 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-11 - Service name=[add] can be reached at address=[]
+2016-05-09 22:18:09,935 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 22:18:09,939 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-16 - Locating service name=[min] ...
+2016-05-09 22:18:09,944 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-11 - Service name=[min] can be reached at address=[]
+2016-05-09 22:18:20,898 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 22:18:20,902 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-16 - Locating service name=[div] ...
+2016-05-09 22:18:20,907 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-11 - Service name=[div] can be reached at address=[]
+2016-05-09 22:18:35,477 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 22:18:35,481 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-17 - Locating service name=[div] ...
+2016-05-09 22:18:35,486 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-1 - Service name=[div] can be reached at address=[]
+2016-05-09 22:19:19,357 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 22:19:19,361 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-19 - Locating service name=[min] ...
+2016-05-09 22:19:19,365 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-7 - Service name=[min] can be reached at address=[]
+2016-05-09 22:19:23,343 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 22:19:23,347 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-19 - Locating service name=[add] ...
+2016-05-09 22:19:23,351 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-7 - Service name=[add] can be reached at address=[]
+2016-05-09 22:19:27,069 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 22:19:27,073 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-19 - Locating service name=[min] ...
+2016-05-09 22:19:27,078 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-15 - Service name=[min] can be reached at address=[]
+2016-05-09 22:19:35,537 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 22:19:35,540 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-19 - Locating service name=[min] ...
+2016-05-09 22:19:35,545 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-9 - Service name=[min] can be reached at address=[]
+2016-05-09 22:19:44,316 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 22:19:44,320 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-19 - Locating service name=[div] ...
+2016-05-09 22:19:44,325 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-9 - Service name=[div] can be reached at address=[]
+2016-05-09 22:19:44,342 [ERROR] from dispatcher in dispatcher-impl-application-akka.actor.default-dispatcher-18 - Exception in PathCallId{pathPattern='/api/calculator/:op'}
+com.lightbend.lagom.javadsl.api.transport.TransportException: 
+	at com.lightbend.lagom.javadsl.api.transport.TransportException.fromCodeAndMessage(TransportException.java:49) ~[lagom-javadsl-api_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.javadsl.jackson.JacksonExceptionSerializer.deserialize(JacksonExceptionSerializer.java:83) ~[lagom-javadsl-jackson_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.internal.client.ClientServiceCallInvoker$$anonfun$com$lightbend$lagom$internal$client$ClientServiceCallInvoker$$makeStrictCall$1.apply(ServiceClientImplementor.scala:328) ~[lagom-javadsl-client_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.internal.client.ClientServiceCallInvoker$$anonfun$com$lightbend$lagom$internal$client$ClientServiceCallInvoker$$makeStrictCall$1.apply(ServiceClientImplementor.scala:315) ~[lagom-javadsl-client_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at scala.util.Success$$anonfun$map$1.apply(Try.scala:237) ~[scala-library-2.11.7.jar:na]
+	at scala.util.Try$.apply(Try.scala:192) ~[scala-library-2.11.7.jar:na]
+	at scala.util.Success.map(Try.scala:237) ~[scala-library-2.11.7.jar:na]
+	at scala.concurrent.Future$$anonfun$map$1.apply(Future.scala:235) ~[scala-library-2.11.7.jar:na]
+	at scala.concurrent.Future$$anonfun$map$1.apply(Future.scala:235) ~[scala-library-2.11.7.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32) [scala-library-2.11.7.jar:na]
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:55) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply$mcV$sp(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:72) [scala-library-2.11.7.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:90) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:39) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:405) [akka-actor_2.11-2.4.2.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) [scala-library-2.11.7.jar:na]
+2016-05-09 22:20:00,280 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 22:20:00,284 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-19 - Locating service name=[div] ...
+2016-05-09 22:20:00,289 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-9 - Service name=[div] can be reached at address=[]
+2016-05-09 22:20:00,297 [ERROR] from dispatcher in dispatcher-impl-application-akka.actor.default-dispatcher-19 - Exception in PathCallId{pathPattern='/api/calculator/:op'}
+com.lightbend.lagom.javadsl.api.transport.TransportException: 
+	at com.lightbend.lagom.javadsl.api.transport.TransportException.fromCodeAndMessage(TransportException.java:49) ~[lagom-javadsl-api_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.javadsl.jackson.JacksonExceptionSerializer.deserialize(JacksonExceptionSerializer.java:83) ~[lagom-javadsl-jackson_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.internal.client.ClientServiceCallInvoker$$anonfun$com$lightbend$lagom$internal$client$ClientServiceCallInvoker$$makeStrictCall$1.apply(ServiceClientImplementor.scala:328) ~[lagom-javadsl-client_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.internal.client.ClientServiceCallInvoker$$anonfun$com$lightbend$lagom$internal$client$ClientServiceCallInvoker$$makeStrictCall$1.apply(ServiceClientImplementor.scala:315) ~[lagom-javadsl-client_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at scala.util.Success$$anonfun$map$1.apply(Try.scala:237) ~[scala-library-2.11.7.jar:na]
+	at scala.util.Try$.apply(Try.scala:192) ~[scala-library-2.11.7.jar:na]
+	at scala.util.Success.map(Try.scala:237) ~[scala-library-2.11.7.jar:na]
+	at scala.concurrent.Future$$anonfun$map$1.apply(Future.scala:235) ~[scala-library-2.11.7.jar:na]
+	at scala.concurrent.Future$$anonfun$map$1.apply(Future.scala:235) ~[scala-library-2.11.7.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32) [scala-library-2.11.7.jar:na]
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:55) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply$mcV$sp(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:72) [scala-library-2.11.7.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:90) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:39) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:405) [akka-actor_2.11-2.4.2.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) [scala-library-2.11.7.jar:na]
+2016-05-09 22:22:58,278 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 22:22:58,282 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-22 - Locating service name=[div] ...
+2016-05-09 22:22:58,296 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-1 - Service name=[div] can be reached at address=[]
+2016-05-09 22:22:58,307 [ERROR] from dispatcher in dispatcher-impl-application-akka.actor.default-dispatcher-22 - Exception in PathCallId{pathPattern='/api/calculator/:op'}
+com.lightbend.lagom.javadsl.api.transport.TransportException: 
+	at com.lightbend.lagom.javadsl.api.transport.TransportException.fromCodeAndMessage(TransportException.java:49) ~[lagom-javadsl-api_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.javadsl.jackson.JacksonExceptionSerializer.deserialize(JacksonExceptionSerializer.java:83) ~[lagom-javadsl-jackson_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.internal.client.ClientServiceCallInvoker$$anonfun$com$lightbend$lagom$internal$client$ClientServiceCallInvoker$$makeStrictCall$1.apply(ServiceClientImplementor.scala:328) ~[lagom-javadsl-client_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.internal.client.ClientServiceCallInvoker$$anonfun$com$lightbend$lagom$internal$client$ClientServiceCallInvoker$$makeStrictCall$1.apply(ServiceClientImplementor.scala:315) ~[lagom-javadsl-client_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at scala.util.Success$$anonfun$map$1.apply(Try.scala:237) ~[scala-library-2.11.7.jar:na]
+	at scala.util.Try$.apply(Try.scala:192) ~[scala-library-2.11.7.jar:na]
+	at scala.util.Success.map(Try.scala:237) ~[scala-library-2.11.7.jar:na]
+	at scala.concurrent.Future$$anonfun$map$1.apply(Future.scala:235) ~[scala-library-2.11.7.jar:na]
+	at scala.concurrent.Future$$anonfun$map$1.apply(Future.scala:235) ~[scala-library-2.11.7.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32) [scala-library-2.11.7.jar:na]
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:55) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply$mcV$sp(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:72) [scala-library-2.11.7.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:90) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:39) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:405) [akka-actor_2.11-2.4.2.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) [scala-library-2.11.7.jar:na]
+2016-05-09 22:46:58,467 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in dispatcher-impl-application-akka.actor.default-dispatcher-23 - Shutdown application default Akka system: dispatcher-impl-application

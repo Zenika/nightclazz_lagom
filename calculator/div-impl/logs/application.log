@@ -1,10 +1,80 @@
-2016-05-09 21:26:41,753 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryModule in ForkJoinPool-4-worker-1 - Running in Dev mode. The com.lightbend.lagom.javadsl.api.ServiceLocator interface was bound to an implementation that will query the embedded Service Locator. This is fine to use only during development.
-2016-05-09 21:26:42,236 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in ForkJoinPool-4-worker-1 - Starting application default Akka system: div-impl-application
-2016-05-09 21:26:42,510 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in div-impl-application-akka.actor.default-dispatcher-4 - Registered Jackson module [com.fasterxml.jackson.module.paramnames.ParameterNamesModule]
-2016-05-09 21:26:42,520 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in div-impl-application-akka.actor.default-dispatcher-4 - Registered Jackson module [com.fasterxml.jackson.datatype.jdk8.Jdk8Module]
-2016-05-09 21:26:42,520 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in div-impl-application-akka.actor.default-dispatcher-4 - Registered Jackson module [com.fasterxml.jackson.datatype.jsr310.JavaTimeModule]
-2016-05-09 21:26:42,524 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in div-impl-application-akka.actor.default-dispatcher-4 - Registered Jackson module [com.fasterxml.jackson.datatype.pcollections.PCollectionsModule]
-2016-05-09 21:26:42,551 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in div-impl-application-akka.actor.default-dispatcher-4 - Registered Jackson module [com.fasterxml.jackson.datatype.guava.GuavaModule]
-2016-05-09 21:26:43,105 [INFO] from play.api.Play in ForkJoinPool-4-worker-1 - Application started (Dev)
-2016-05-09 21:28:16,571 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json'
-2016-05-09 21:28:35,500 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in div-impl-application-akka.actor.default-dispatcher-5 - Shutdown application default Akka system: div-impl-application
+2016-05-09 22:09:01,630 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryModule in ForkJoinPool-1-worker-1 - Running in Dev mode. The com.lightbend.lagom.javadsl.api.ServiceLocator interface was bound to an implementation that will query the embedded Service Locator. This is fine to use only during development.
+2016-05-09 22:09:01,866 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in ForkJoinPool-1-worker-1 - Starting application default Akka system: div-impl-application
+2016-05-09 22:09:02,132 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in div-impl-application-akka.actor.default-dispatcher-2 - Registered Jackson module [com.fasterxml.jackson.module.paramnames.ParameterNamesModule]
+2016-05-09 22:09:02,137 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in div-impl-application-akka.actor.default-dispatcher-2 - Registered Jackson module [com.fasterxml.jackson.datatype.jdk8.Jdk8Module]
+2016-05-09 22:09:02,138 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in div-impl-application-akka.actor.default-dispatcher-2 - Registered Jackson module [com.fasterxml.jackson.datatype.jsr310.JavaTimeModule]
+2016-05-09 22:09:02,140 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in div-impl-application-akka.actor.default-dispatcher-2 - Registered Jackson module [com.fasterxml.jackson.datatype.pcollections.PCollectionsModule]
+2016-05-09 22:09:02,147 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in div-impl-application-akka.actor.default-dispatcher-2 - Registered Jackson module [com.fasterxml.jackson.datatype.guava.GuavaModule]
+2016-05-09 22:09:02,675 [INFO] from play.api.Play in ForkJoinPool-1-worker-1 - Application started (Dev)
+2016-05-09 22:18:20,955 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json'
+2016-05-09 22:18:35,489 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json'
+2016-05-09 22:19:44,327 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json'
+2016-05-09 22:19:44,335 [ERROR] from div in div-impl-application-akka.actor.default-dispatcher-9 - Exception in PathCallId{pathPattern='/api/op/div'}
+java.lang.ArithmeticException: / by zero
+	at com.zenika.nc.DivServiceImpl.lambda$op$0(DivServiceImpl.java:14) ~[classes/:na]
+	at com.lightbend.lagom.javadsl.api.ServiceCall.lambda$handleResponseHeader$1(ServiceCall.java:102) ~[lagom-javadsl-api_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.internal.server.SingleServiceRouter.invokeServiceCall(ServerBuilder.scala:509) ~[lagom-javadsl-server_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.internal.server.SingleServiceRouter$$anonfun$com$lightbend$lagom$internal$server$SingleServiceRouter$$handleServiceCall$1.apply(ServerBuilder.scala:259) ~[lagom-javadsl-server_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.internal.server.SingleServiceRouter$$anonfun$com$lightbend$lagom$internal$server$SingleServiceRouter$$handleServiceCall$1.apply(ServerBuilder.scala:247) ~[lagom-javadsl-server_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:251) ~[scala-library-2.11.7.jar:na]
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:249) ~[scala-library-2.11.7.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32) [scala-library-2.11.7.jar:na]
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:55) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply$mcV$sp(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:72) [scala-library-2.11.7.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:90) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:39) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:405) [akka-actor_2.11-2.4.2.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) [scala-library-2.11.7.jar:na]
+2016-05-09 22:20:00,291 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json'
+2016-05-09 22:20:00,294 [ERROR] from div in div-impl-application-akka.actor.default-dispatcher-8 - Exception in PathCallId{pathPattern='/api/op/div'}
+java.lang.ArithmeticException: / by zero
+	at com.zenika.nc.DivServiceImpl.lambda$op$0(DivServiceImpl.java:14) ~[classes/:na]
+	at com.lightbend.lagom.javadsl.api.ServiceCall.lambda$handleResponseHeader$1(ServiceCall.java:102) ~[lagom-javadsl-api_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.internal.server.SingleServiceRouter.invokeServiceCall(ServerBuilder.scala:509) ~[lagom-javadsl-server_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.internal.server.SingleServiceRouter$$anonfun$com$lightbend$lagom$internal$server$SingleServiceRouter$$handleServiceCall$1.apply(ServerBuilder.scala:259) ~[lagom-javadsl-server_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.internal.server.SingleServiceRouter$$anonfun$com$lightbend$lagom$internal$server$SingleServiceRouter$$handleServiceCall$1.apply(ServerBuilder.scala:247) ~[lagom-javadsl-server_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:251) ~[scala-library-2.11.7.jar:na]
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:249) ~[scala-library-2.11.7.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32) [scala-library-2.11.7.jar:na]
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:55) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply$mcV$sp(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:72) [scala-library-2.11.7.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:90) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:39) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:405) [akka-actor_2.11-2.4.2.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) [scala-library-2.11.7.jar:na]
+2016-05-09 22:22:58,301 [DEBUG] from play.api.http.MediaRange in netty-event-loop-4 - Unable to parse part of media range header 'application/json'
+2016-05-09 22:22:58,304 [ERROR] from div in div-impl-application-akka.actor.default-dispatcher-12 - Exception in PathCallId{pathPattern='/api/op/div'}
+java.lang.ArithmeticException: / by zero
+	at com.zenika.nc.DivServiceImpl.lambda$op$0(DivServiceImpl.java:14) ~[classes/:na]
+	at com.lightbend.lagom.javadsl.api.ServiceCall.lambda$handleResponseHeader$1(ServiceCall.java:102) ~[lagom-javadsl-api_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.internal.server.SingleServiceRouter.invokeServiceCall(ServerBuilder.scala:509) ~[lagom-javadsl-server_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.internal.server.SingleServiceRouter$$anonfun$com$lightbend$lagom$internal$server$SingleServiceRouter$$handleServiceCall$1.apply(ServerBuilder.scala:259) ~[lagom-javadsl-server_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.internal.server.SingleServiceRouter$$anonfun$com$lightbend$lagom$internal$server$SingleServiceRouter$$handleServiceCall$1.apply(ServerBuilder.scala:247) ~[lagom-javadsl-server_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:251) ~[scala-library-2.11.7.jar:na]
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:249) ~[scala-library-2.11.7.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32) [scala-library-2.11.7.jar:na]
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:55) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply$mcV$sp(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:72) [scala-library-2.11.7.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:90) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:39) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:405) [akka-actor_2.11-2.4.2.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) [scala-library-2.11.7.jar:na]
+2016-05-09 22:46:58,614 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in div-impl-application-akka.actor.default-dispatcher-13 - Shutdown application default Akka system: div-impl-application

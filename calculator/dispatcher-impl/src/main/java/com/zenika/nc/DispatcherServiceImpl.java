@@ -32,7 +32,7 @@ public class DispatcherServiceImpl implements DispatcherService {
 
 
     private ServiceCall<NotUsed, Operandes, Integer> getService(String op) {
-        final ServiceCall r;
+        final ServiceCall<NotUsed, Operandes, Integer> r;
         switch (op) {
             case "mult":
                 r = multService.op();

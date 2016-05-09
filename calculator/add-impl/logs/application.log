@@ -1,10 +1,16 @@
-2016-05-09 21:26:39,750 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryModule in ForkJoinPool-5-worker-1 - Running in Dev mode. The com.lightbend.lagom.javadsl.api.ServiceLocator interface was bound to an implementation that will query the embedded Service Locator. This is fine to use only during development.
-2016-05-09 21:26:40,339 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in add-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.module.paramnames.ParameterNamesModule]
-2016-05-09 21:26:40,344 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in add-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.jdk8.Jdk8Module]
-2016-05-09 21:26:40,345 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in add-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.jsr310.JavaTimeModule]
-2016-05-09 21:26:40,348 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in add-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.pcollections.PCollectionsModule]
-2016-05-09 21:26:40,358 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in add-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.guava.GuavaModule]
-2016-05-09 21:26:41,057 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in ForkJoinPool-5-worker-1 - Starting application default Akka system: add-impl-application
-2016-05-09 21:26:42,071 [INFO] from play.api.Play in ForkJoinPool-5-worker-1 - Application started (Dev)
-2016-05-09 21:28:24,606 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json'
-2016-05-09 21:28:35,697 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in add-impl-application-akka.actor.default-dispatcher-16 - Shutdown application default Akka system: add-impl-application
+2016-05-09 22:09:06,792 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryModule in ForkJoinPool-2-worker-1 - Running in Dev mode. The com.lightbend.lagom.javadsl.api.ServiceLocator interface was bound to an implementation that will query the embedded Service Locator. This is fine to use only during development.
+2016-05-09 22:09:07,269 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in add-impl-application-akka.actor.default-dispatcher-6 - Registered Jackson module [com.fasterxml.jackson.module.paramnames.ParameterNamesModule]
+2016-05-09 22:09:07,273 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in add-impl-application-akka.actor.default-dispatcher-6 - Registered Jackson module [com.fasterxml.jackson.datatype.jdk8.Jdk8Module]
+2016-05-09 22:09:07,274 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in add-impl-application-akka.actor.default-dispatcher-6 - Registered Jackson module [com.fasterxml.jackson.datatype.jsr310.JavaTimeModule]
+2016-05-09 22:09:07,276 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in add-impl-application-akka.actor.default-dispatcher-6 - Registered Jackson module [com.fasterxml.jackson.datatype.pcollections.PCollectionsModule]
+2016-05-09 22:09:07,283 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in add-impl-application-akka.actor.default-dispatcher-6 - Registered Jackson module [com.fasterxml.jackson.datatype.guava.GuavaModule]
+2016-05-09 22:09:07,529 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in ForkJoinPool-2-worker-1 - Starting application default Akka system: add-impl-application
+2016-05-09 22:09:07,878 [INFO] from play.api.Play in ForkJoinPool-2-worker-1 - Application started (Dev)
+2016-05-09 22:09:30,818 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json'
+2016-05-09 22:14:06,473 [DEBUG] from play.api.http.MediaRange in netty-event-loop-4 - Unable to parse part of media range header 'application/json'
+2016-05-09 22:14:39,402 [DEBUG] from play.api.http.MediaRange in netty-event-loop-4 - Unable to parse part of media range header 'application/json'
+2016-05-09 22:15:43,415 [DEBUG] from play.api.http.MediaRange in netty-event-loop-4 - Unable to parse part of media range header 'application/json'
+2016-05-09 22:16:22,330 [DEBUG] from play.api.http.MediaRange in netty-event-loop-4 - Unable to parse part of media range header 'application/json'
+2016-05-09 22:17:51,007 [DEBUG] from play.api.http.MediaRange in netty-event-loop-4 - Unable to parse part of media range header 'application/json'
+2016-05-09 22:19:23,365 [DEBUG] from play.api.http.MediaRange in netty-event-loop-5 - Unable to parse part of media range header 'application/json'
+2016-05-09 22:46:58,931 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in add-impl-application-akka.actor.default-dispatcher-3 - Shutdown application default Akka system: add-impl-application

@@ -4,8 +4,19 @@
     margin: 1px 14px 1px 1px;
 }
 
+.operand, .operator, #equal, #del{
+    background: #fcf8e3;
+}
 #result.omb {
 
     margin: 1px 14px 16px 1px;
 }
 
+.page-header {
+    background: #dc143c !important;
+}
+
+#title {
+    color : #fcf8e3;
+    font-size: 25px;
+}
