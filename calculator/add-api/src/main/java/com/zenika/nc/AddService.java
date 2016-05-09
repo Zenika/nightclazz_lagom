@@ -17,11 +17,11 @@ import static com.lightbend.lagom.javadsl.api.Service.restCall;
 public interface AddService extends Service {
 
     //ServiceCall<NotUsed, Operandes, Integer> op();
-    ServiceCall<NotUsed, NotUsed, Integer> op();
+    ServiceCall<NotUsed, Operandes, Integer> op();
 
     @Override
     default Descriptor descriptor() {
-        return named("add").with(restCall(Method.GET,"/api/op/add", op())).withAutoAcl(true);
+        return named("add").with(pathCall("/api/op/add", op())).withAutoAcl(true);
 
 
     }

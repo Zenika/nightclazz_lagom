@@ -101,7 +101,7 @@ lazy val dispatcherImpl = project("dispatcher-impl")
     )
   )
   .settings(lagomForkedTestSettings: _*)
-  .dependsOn(dispatcherApi, addApi)
+  .dependsOn(dispatcherApi, addApi, minApi, multApi, divApi)
 
 lazy val frontEnd = project("front-end")
   .enablePlugins(PlayJava, LagomPlay)

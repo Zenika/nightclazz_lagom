@@ -1,35 +1,57 @@
-2016-05-09 17:17:26,618 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryModule in ForkJoinPool-5-worker-1 - Running in Dev mode. The com.lightbend.lagom.javadsl.api.ServiceLocator interface was bound to an implementation that will query the embedded Service Locator. This is fine to use only during development.
-2016-05-09 17:17:27,110 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in ForkJoinPool-5-worker-1 - Starting application default Akka system: dispatcher-impl-application
-2016-05-09 17:17:27,381 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.module.paramnames.ParameterNamesModule]
-2016-05-09 17:17:27,390 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.jdk8.Jdk8Module]
-2016-05-09 17:17:27,391 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.jsr310.JavaTimeModule]
-2016-05-09 17:17:27,395 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.pcollections.PCollectionsModule]
-2016-05-09 17:17:27,412 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.guava.GuavaModule]
-2016-05-09 17:17:28,047 [INFO] from play.api.Play in ForkJoinPool-5-worker-1 - Application started (Dev)
-2016-05-09 17:17:48,114 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
-2016-05-09 17:17:48,190 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-5 - Locating service name=[add] ...
-2016-05-09 17:17:48,220 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-15 - Service name=[add] can be reached at address=[]
-2016-05-09 17:17:58,215 [ERROR] from dispatcher in dispatcher-impl-application-akka.actor.default-dispatcher-4 - Exception in PathCallId{pathPattern='/api/calculator/:op'}
-akka.pattern.CircuitBreaker$$anon$1: Circuit Breaker Timed out.
-2016-05-09 17:24:15,237 [ERROR] from application in dispatcher-impl-application-akka.actor.default-dispatcher-7 - Error executing stop hook
-akka.pattern.CircuitBreaker$$anon$1: Circuit Breaker Timed out.
-2016-05-09 17:24:15,261 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in dispatcher-impl-application-akka.actor.default-dispatcher-7 - Shutdown application default Akka system: dispatcher-impl-application
-2016-05-09 17:24:15,366 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryModule in dispatcher-impl-application-akka.actor.default-dispatcher-2 - Running in Dev mode. The com.lightbend.lagom.javadsl.api.ServiceLocator interface was bound to an implementation that will query the embedded Service Locator. This is fine to use only during development.
-2016-05-09 17:24:15,494 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in dispatcher-impl-application-akka.actor.default-dispatcher-2 - Starting application default Akka system: dispatcher-impl-application
-2016-05-09 17:24:15,497 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-2 - Registered Jackson module [com.fasterxml.jackson.module.paramnames.ParameterNamesModule]
-2016-05-09 17:24:15,499 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-2 - Registered Jackson module [com.fasterxml.jackson.datatype.jdk8.Jdk8Module]
-2016-05-09 17:24:15,499 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-2 - Registered Jackson module [com.fasterxml.jackson.datatype.jsr310.JavaTimeModule]
-2016-05-09 17:24:15,500 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-2 - Registered Jackson module [com.fasterxml.jackson.datatype.pcollections.PCollectionsModule]
-2016-05-09 17:24:15,500 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-2 - Registered Jackson module [com.fasterxml.jackson.datatype.guava.GuavaModule]
-2016-05-09 17:24:15,699 [INFO] from play.api.Play in dispatcher-impl-application-akka.actor.default-dispatcher-2 - Application started (Dev)
-2016-05-09 17:24:17,425 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
-2016-05-09 17:24:17,435 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-2 - Locating service name=[add] ...
-2016-05-09 17:24:25,713 [ERROR] from com.lightbend.lagom.internal.server.RegisterWithServiceRegistry in ForkJoinPool.commonPool-worker-6 - Service name=[dispatcher] couldn't register itself to the service locator.
-akka.pattern.CircuitBreaker$$anon$1: Circuit Breaker Timed out.
-2016-05-09 17:24:27,448 [ERROR] from dispatcher in dispatcher-impl-application-akka.actor.default-dispatcher-5 - Exception in PathCallId{pathPattern='/api/calculator/:op'}
-akka.pattern.CircuitBreaker$$anon$1: Circuit Breaker Timed out.
-2016-05-09 17:24:27,453 [WARN] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-5 - The service locator replied with an error when looking up the service name=[add] address
-akka.pattern.CircuitBreaker$$anon$1: Circuit Breaker Timed out.
-2016-05-09 17:35:02,427 [ERROR] from application in dispatcher-impl-application-akka.actor.default-dispatcher-2 - Error executing stop hook
-akka.pattern.CircuitBreaker$$anon$1: Circuit Breaker Timed out.
-2016-05-09 17:35:02,452 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in dispatcher-impl-application-akka.actor.default-dispatcher-2 - Shutdown application default Akka system: dispatcher-impl-application
+2016-05-09 21:26:41,405 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryModule in ForkJoinPool-6-worker-1 - Running in Dev mode. The com.lightbend.lagom.javadsl.api.ServiceLocator interface was bound to an implementation that will query the embedded Service Locator. This is fine to use only during development.
+2016-05-09 21:26:42,084 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in ForkJoinPool-6-worker-1 - Starting application default Akka system: dispatcher-impl-application
+2016-05-09 21:26:42,356 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-5 - Registered Jackson module [com.fasterxml.jackson.module.paramnames.ParameterNamesModule]
+2016-05-09 21:26:42,364 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-5 - Registered Jackson module [com.fasterxml.jackson.datatype.jdk8.Jdk8Module]
+2016-05-09 21:26:42,365 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-5 - Registered Jackson module [com.fasterxml.jackson.datatype.jsr310.JavaTimeModule]
+2016-05-09 21:26:42,371 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-5 - Registered Jackson module [com.fasterxml.jackson.datatype.pcollections.PCollectionsModule]
+2016-05-09 21:26:42,401 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-5 - Registered Jackson module [com.fasterxml.jackson.datatype.guava.GuavaModule]
+2016-05-09 21:26:42,991 [INFO] from play.api.Play in ForkJoinPool-6-worker-1 - Application started (Dev)
+2016-05-09 21:26:56,648 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 21:26:56,692 [ERROR] from dispatcher in dispatcher-impl-application-akka.actor.default-dispatcher-5 - Exception in PathCallId{pathPattern='/api/calculator/:op'}
+java.lang.IllegalArgumentException: min
+	at com.zenika.nc.DispatcherServiceImpl.getService(DispatcherServiceImpl.java:50) ~[classes/:na]
+	at com.zenika.nc.DispatcherServiceImpl.lambda$compute$0(DispatcherServiceImpl.java:30) ~[classes/:na]
+	at com.lightbend.lagom.javadsl.api.ServiceCall.lambda$handleResponseHeader$1(ServiceCall.java:102) ~[lagom-javadsl-api_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.internal.server.SingleServiceRouter.invokeServiceCall(ServerBuilder.scala:509) ~[lagom-javadsl-server_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.internal.server.SingleServiceRouter$$anonfun$com$lightbend$lagom$internal$server$SingleServiceRouter$$handleServiceCall$1.apply(ServerBuilder.scala:259) ~[lagom-javadsl-server_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at com.lightbend.lagom.internal.server.SingleServiceRouter$$anonfun$com$lightbend$lagom$internal$server$SingleServiceRouter$$handleServiceCall$1.apply(ServerBuilder.scala:247) ~[lagom-javadsl-server_2.11-1.0.0-M1.jar:1.0.0-M1]
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:251) ~[scala-library-2.11.7.jar:na]
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:249) ~[scala-library-2.11.7.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32) [scala-library-2.11.7.jar:na]
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:55) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply$mcV$sp(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91) [akka-actor_2.11-2.4.2.jar:na]
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:72) [scala-library-2.11.7.jar:na]
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:90) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:39) [akka-actor_2.11-2.4.2.jar:na]
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:405) [akka-actor_2.11-2.4.2.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) [scala-library-2.11.7.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) [scala-library-2.11.7.jar:na]
+2016-05-09 21:27:46,367 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in dispatcher-impl-application-akka.actor.default-dispatcher-6 - Shutdown application default Akka system: dispatcher-impl-application
+2016-05-09 21:27:46,461 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryModule in dispatcher-impl-application-akka.actor.default-dispatcher-4 - Running in Dev mode. The com.lightbend.lagom.javadsl.api.ServiceLocator interface was bound to an implementation that will query the embedded Service Locator. This is fine to use only during development.
+2016-05-09 21:27:46,535 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in dispatcher-impl-application-akka.actor.default-dispatcher-4 - Starting application default Akka system: dispatcher-impl-application
+2016-05-09 21:27:46,536 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.module.paramnames.ParameterNamesModule]
+2016-05-09 21:27:46,537 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.jdk8.Jdk8Module]
+2016-05-09 21:27:46,537 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.jsr310.JavaTimeModule]
+2016-05-09 21:27:46,538 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.pcollections.PCollectionsModule]
+2016-05-09 21:27:46,538 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Registered Jackson module [com.fasterxml.jackson.datatype.guava.GuavaModule]
+2016-05-09 21:27:46,612 [INFO] from play.api.Play in dispatcher-impl-application-akka.actor.default-dispatcher-4 - Application started (Dev)
+2016-05-09 21:27:52,144 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 21:27:52,149 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-4 - Locating service name=[min] ...
+2016-05-09 21:27:52,167 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-15 - Service name=[min] can be reached at address=[]
+2016-05-09 21:27:57,188 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 21:27:57,192 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-3 - Locating service name=[min] ...
+2016-05-09 21:27:57,198 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-7 - Service name=[min] can be reached at address=[]
+2016-05-09 21:28:06,825 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 21:28:06,829 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-2 - Locating service name=[mult] ...
+2016-05-09 21:28:06,835 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-9 - Service name=[mult] can be reached at address=[]
+2016-05-09 21:28:16,506 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 21:28:16,510 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-4 - Locating service name=[div] ...
+2016-05-09 21:28:16,518 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-15 - Service name=[div] can be reached at address=[]
+2016-05-09 21:28:24,548 [DEBUG] from play.api.http.MediaRange in netty-event-loop-3 - Unable to parse part of media range header 'application/json, text/javascript, */*; q=0.01'
+2016-05-09 21:28:24,552 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in dispatcher-impl-application-akka.actor.default-dispatcher-4 - Locating service name=[add] ...
+2016-05-09 21:28:24,558 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryServiceLocator in ForkJoinPool-3-worker-9 - Service name=[add] can be reached at address=[]
+2016-05-09 21:28:35,456 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in dispatcher-impl-application-akka.actor.default-dispatcher-4 - Shutdown application default Akka system: dispatcher-impl-application
