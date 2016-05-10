@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <title>Calculator</title>
+        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="assets/javascripts/vuejs/vue.min.js"></script>
+        <script type="text/javascript" src="assets/javascripts/jquery/jquery-2.2.3.min.js"></script>
+        <script type="text/javascript" src="assets/javascripts/bootstrap/bootstrap.js"></script>
+        <script type="text/javascript" src="assets/javascripts/underscore/underscore.js"></script>
+        <link rel="stylesheet" href="assets/stylesheets/bootstrap/bootstrap.min.css"/>
+        <link rel="stylesheet" href="assets/stylesheets/bootstrap/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="assets/stylesheets/main.css"/>
+        <script type="application/javascript">
+
+            var mappingOperator = {"*": "mult", "/": "div", "+": "add", "-": "min"}
+            var isResult = false;
+            $(function () {
+
+
+                function WebSocket() {
+                    // Google example code
+                    ws = new WebSocket("ws://localhost:9000/api/messagestream");
+                    ws.onopen = function () {
+                        // Web Socket is connected. You can send data by send() method
+                        console.log("ws open");
+                    };
+                    ws.onmessage = function (evt) {
+                        var received_msg = evt.data;
+                        $("#rm").text(received_msg);
+                    };
+                    ws.onclose = function () { // websocket is closed. };
+                        console.log("close ws");
+                    }
+                }
+
+            });
+
+
+            function checkZero(val) {
+                if (val == "0") {
+                    return ""
+                } else {
+                    return val;
+                }
+            }
+
+            function checkDoublon(op) {
+                var currentDisp = $("#display").val();
+                return (currentDisp.indexOf(op) == -1) && (_.intersection(_.toArray(currentDisp), ["*", "/", "+", "-"]).length == 0);
+            }
+
+            function getOp2(val) {
+                if (val != "") {
+                    return val.split($("body").data("operateur"))[1];
+                } else {
+                    return "";
+                }
+            }
+
+            function getjson() {
+                return $("body").data();
+            }
+            function addJson(key, val) {
+                return $("body").data(key, val);
+            }
+
+            function sendMessage(){
+                addJson("mesage","One message");
+                addJson("name","Michel");
+
+                $.post(
+                        "/api/messages",
+                        JSON.stringify(getjson()),
+                        function (data, status) {
+                            console.log(status + "-" + data);
+                        },
+                        "json"
+                ).fail(function () {
+                    $("#display").val("Error!");
+                })
+            }
+
+
+
+
+
+
+        </script>
+
+    </head>
+    <body >
+
+
+        <div id="display">
+
+        </div>
+       <div id="wm"></div> <button class="btn btn-info" type="button" value="update" onclick="sendMessage()">Update filter
+    </button>
+       <div id="rm"></div>
+    </body>
+</html>
