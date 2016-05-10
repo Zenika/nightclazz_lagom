@@ -1,3 +1,10 @@
 */target
 */.idea
 .idea
+add-impl/logs/application.log
+dispatcher-impl/logs/application.log
+div-impl/logs/application.log
+front-end/logs/application.log
+logs/application.log
+min-impl/logs/application.log
+mult-impl/logs/application.log
