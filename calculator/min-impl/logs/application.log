@@ -1,0 +1,12 @@
+2016-05-09 17:38:59,027 [DEBUG] from com.google.inject.internal.util.Stopwatch in ForkJoinPool-1-worker-1 - Module execution: 380ms
+2016-05-09 17:39:03,039 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryModule in ForkJoinPool-2-worker-1 - Running in Dev mode. The com.lightbend.lagom.javadsl.api.ServiceLocator interface was bound to an implementation that will query the embedded Service Locator. This is fine to use only during development.
+2016-05-09 17:39:03,365 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in ForkJoinPool-2-worker-1 - Starting application default Akka system: min-impl-application
+2016-05-09 17:39:03,751 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in min-impl-application-akka.actor.default-dispatcher-5 - Registered Jackson module [com.fasterxml.jackson.module.paramnames.ParameterNamesModule]
+2016-05-09 17:39:03,759 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in min-impl-application-akka.actor.default-dispatcher-5 - Registered Jackson module [com.fasterxml.jackson.datatype.jdk8.Jdk8Module]
+2016-05-09 17:39:03,760 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in min-impl-application-akka.actor.default-dispatcher-5 - Registered Jackson module [com.fasterxml.jackson.datatype.jsr310.JavaTimeModule]
+2016-05-09 17:39:03,763 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in min-impl-application-akka.actor.default-dispatcher-5 - Registered Jackson module [com.fasterxml.jackson.datatype.pcollections.PCollectionsModule]
+2016-05-09 17:39:03,778 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in min-impl-application-akka.actor.default-dispatcher-5 - Registered Jackson module [com.fasterxml.jackson.datatype.guava.GuavaModule]
+2016-05-09 17:39:04,117 [INFO] from play.api.Play in ForkJoinPool-2-worker-1 - Application started (Dev)
+2016-05-10 09:26:47,467 [ERROR] from application in min-impl-application-akka.actor.default-dispatcher-2 - Error executing stop hook
+akka.pattern.CircuitBreaker$$anon$1: Circuit Breaker Timed out.
+2016-05-10 09:26:47,485 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in min-impl-application-akka.actor.default-dispatcher-2 - Shutdown application default Akka system: min-impl-application

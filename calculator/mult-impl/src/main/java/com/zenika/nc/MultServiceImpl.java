@@ -11,7 +11,7 @@ import static java.util.concurrent.CompletableFuture.completedFuture;
 public class MultServiceImpl implements MultService {
     @Override
     public ServiceCall<NotUsed, Operandes, Integer> op() {
-        return (id, operandes) -> completedFuture(operandes.getOp1() + operandes.getOp2());
+        return (id, operandes) -> completedFuture(operandes.getOp1() * operandes.getOp2());
 
     }
 }

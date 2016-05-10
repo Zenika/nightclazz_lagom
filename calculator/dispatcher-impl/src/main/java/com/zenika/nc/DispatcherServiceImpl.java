@@ -3,8 +3,6 @@ package com.zenika.nc;
 import akka.NotUsed;
 import com.google.inject.Inject;
 import com.lightbend.lagom.javadsl.api.ServiceCall;
-import com.lightbend.lagom.javadsl.api.ServiceLocator;
-import play.libs.ws.WSClient;
 
 
 /**
@@ -13,15 +11,44 @@ import play.libs.ws.WSClient;
 public class DispatcherServiceImpl implements DispatcherService {
 
     final AddService addService;
+    final MinService minService;
+    final MultService multService;
+    final DivService divService;
 
     @Inject
-    public DispatcherServiceImpl(AddService add) {
-        this.addService=add;
+    public DispatcherServiceImpl(AddService add, MultService mult, MinService min, DivService div) {
+        this.addService = add;
+        this.divService = div;
+        this.multService = mult;
+        this.minService = min;
     }
 
     @Override
     public ServiceCall<String, Operandes, Integer> compute() {
-        System.out.println("helle");
-        return (id, operandes) -> addService.op().invoke(NotUsed.getInstance(),NotUsed.getInstance());
+
+
+        return (id, operandes) -> getService(id).invoke(NotUsed.getInstance(), operandes);
+    }
+
+
+    private ServiceCall<NotUsed, Operandes, Integer> getService(String op) {
+        final ServiceCall<NotUsed, Operandes, Integer> r;
+        switch (op) {
+            case "mult":
+                r = multService.op();
+                break;
+            case "div":
+                r = divService.op();
+                break;
+            case "add":
+                r = addService.op();
+                break;
+            case "min":
+                r = minService.op();
+                break;
+            default:
+                throw new IllegalArgumentException(op);
+        }
+        return r;
     }
 }

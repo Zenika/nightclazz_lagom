@@ -14,5 +14,8 @@ public class DispatcherServiceModule
     protected void configure() {
         bindServices(serviceBinding(DispatcherService.class, DispatcherServiceImpl.class));
         bindClient(AddService.class);
+        bindClient(DivService.class);
+        bindClient(MultService.class);
+        bindClient(MinService.class);
     }
 }

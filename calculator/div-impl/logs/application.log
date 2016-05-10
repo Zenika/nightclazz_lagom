@@ -1,0 +1,34 @@
+2016-05-09 17:38:58,966 [DEBUG] from com.lightbend.lagom.internal.registry.ServiceRegistryModule in ForkJoinPool-1-worker-1 - Running in Dev mode. The com.lightbend.lagom.javadsl.api.ServiceLocator interface was bound to an implementation that will query the embedded Service Locator. This is fine to use only during development.
+2016-05-09 17:38:59,419 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in ForkJoinPool-1-worker-1 - Starting application default Akka system: div-impl-application
+2016-05-09 17:38:59,840 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in div-impl-application-akka.actor.default-dispatcher-2 - Registered Jackson module [com.fasterxml.jackson.module.paramnames.ParameterNamesModule]
+2016-05-09 17:38:59,847 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in div-impl-application-akka.actor.default-dispatcher-2 - Registered Jackson module [com.fasterxml.jackson.datatype.jdk8.Jdk8Module]
+2016-05-09 17:38:59,848 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in div-impl-application-akka.actor.default-dispatcher-2 - Registered Jackson module [com.fasterxml.jackson.datatype.jsr310.JavaTimeModule]
+2016-05-09 17:38:59,852 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in div-impl-application-akka.actor.default-dispatcher-2 - Registered Jackson module [com.fasterxml.jackson.datatype.pcollections.PCollectionsModule]
+2016-05-09 17:38:59,866 [DEBUG] from com.lightbend.lagom.internal.jackson.JacksonObjectMapperProvider in div-impl-application-akka.actor.default-dispatcher-2 - Registered Jackson module [com.fasterxml.jackson.datatype.guava.GuavaModule]
+2016-05-09 17:39:00,287 [INFO] from play.api.Play in ForkJoinPool-1-worker-1 - Application started (Dev)
+2016-05-10 09:26:58,426 [ERROR] from application in div-impl-application-akka.actor.default-dispatcher-5 - Error executing stop hook
+java.net.ConnectException: Connection refused: no further information: /127.0.0.1:8888
+	at org.asynchttpclient.netty.channel.NettyConnectListener.onFailure(NettyConnectListener.java:137) ~[async-http-client-2.0.0-RC9.jar:na]
+	at org.asynchttpclient.netty.request.NettyChannelConnector$1.onFailure(NettyChannelConnector.java:95) ~[async-http-client-2.0.0-RC9.jar:na]
+	at org.asynchttpclient.netty.SimpleChannelFutureListener.operationComplete(SimpleChannelFutureListener.java:28) ~[async-http-client-2.0.0-RC9.jar:na]
+	at org.asynchttpclient.netty.SimpleChannelFutureListener.operationComplete(SimpleChannelFutureListener.java:20) ~[async-http-client-2.0.0-RC9.jar:na]
+	at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:683) ~[netty-common-4.0.34.Final.jar:4.0.34.Final]
+	at io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:604) ~[netty-common-4.0.34.Final.jar:4.0.34.Final]
+	at io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:564) ~[netty-common-4.0.34.Final.jar:4.0.34.Final]
+	at io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:425) ~[netty-common-4.0.34.Final.jar:4.0.34.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:276) ~[netty-transport-4.0.34.Final.jar:4.0.34.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:292) ~[netty-transport-4.0.34.Final.jar:4.0.34.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:528) ~[netty-transport-4.0.34.Final.jar:4.0.34.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:468) ~[netty-transport-4.0.34.Final.jar:4.0.34.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:382) ~[netty-transport-4.0.34.Final.jar:4.0.34.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:354) ~[netty-transport-4.0.34.Final.jar:4.0.34.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:112) ~[netty-common-4.0.34.Final.jar:4.0.34.Final]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137) ~[netty-common-4.0.34.Final.jar:4.0.34.Final]
+	at java.lang.Thread.run(Thread.java:745) ~[na:1.8.0_05]
+Caused by: java.net.ConnectException: Connection refused: no further information: /127.0.0.1:8888
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method) ~[na:1.8.0_05]
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:712) ~[na:1.8.0_05]
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:224) ~[netty-transport-4.0.34.Final.jar:4.0.34.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:289) ~[netty-transport-4.0.34.Final.jar:4.0.34.Final]
+	... 7 common frames omitted
+2016-05-10 09:26:58,447 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in div-impl-application-akka.actor.default-dispatcher-5 - Shutdown application default Akka system: div-impl-application

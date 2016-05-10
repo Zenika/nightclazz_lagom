@@ -1,0 +1,27 @@
+2016-05-09 17:39:00,265 [INFO] from play.core.server.NettyServer in pool-5-thread-2 - Listening for HTTP on /0:0:0:0:0:0:0:0:28118
+2016-05-09 17:39:13,972 [INFO] from play.api.Play in ForkJoinPool-4-worker-1 - Application started (Dev)
+2016-05-10 09:27:00,611 [ERROR] from application in front-end-application-akka.actor.default-dispatcher-17 - Error executing stop hook
+java.net.ConnectException: Connection refused: no further information: /127.0.0.1:8888
+	at org.asynchttpclient.netty.channel.NettyConnectListener.onFailure(NettyConnectListener.java:137)
+	at org.asynchttpclient.netty.request.NettyChannelConnector$1.onFailure(NettyChannelConnector.java:95)
+	at org.asynchttpclient.netty.SimpleChannelFutureListener.operationComplete(SimpleChannelFutureListener.java:28)
+	at org.asynchttpclient.netty.SimpleChannelFutureListener.operationComplete(SimpleChannelFutureListener.java:20)
+	at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:683)
+	at io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:604)
+	at io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:564)
+	at io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:425)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.fulfillConnectPromise(AbstractNioChannel.java:276)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:292)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:528)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:468)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:382)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:354)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:112)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.net.ConnectException: Connection refused: no further information: /127.0.0.1:8888
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:712)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:224)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:289)
+	... 7 common frames omitted
