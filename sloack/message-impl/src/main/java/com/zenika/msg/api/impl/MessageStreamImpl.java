@@ -10,9 +10,10 @@ import com.lightbend.lagom.javadsl.api.ServiceCall;
 import com.lightbend.lagom.javadsl.pubsub.PubSubRef;
 import com.lightbend.lagom.javadsl.pubsub.PubSubRegistry;
 import com.lightbend.lagom.javadsl.pubsub.TopicId;
-import com.zenika.msg.api.AbstractSloackMessage;
 import com.zenika.msg.api.MessageStream;
 import com.zenika.msg.api.SloackMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -22,7 +23,7 @@ import java.util.concurrent.CompletableFuture;
 public class MessageStreamImpl implements MessageStream {
 
     private static final String TOPIC_ID = "sloackChat";
-
+    private final Logger log = LoggerFactory.getLogger(MessageStreamImpl.class);
 
     private PubSubRegistry pusub;
 
@@ -35,7 +36,7 @@ public class MessageStreamImpl implements MessageStream {
     public ServiceCall<NotUsed, SloackMessage, NotUsed> message() {
         return (id, message) -> {
             final PubSubRef<SloackMessage> ref = pusub.refFor(TopicId.of(SloackMessage.class, TOPIC_ID));
-
+            log.info("message :" + message);
             ref.publish(message);
             return CompletableFuture.completedFuture(NotUsed.getInstance());
         };

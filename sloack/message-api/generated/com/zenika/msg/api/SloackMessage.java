@@ -18,6 +18,8 @@ import javax.annotation.concurrent.NotThreadSafe;
  * <p>
  * Use the builder to create immutable instances:
  * {@code SloackMessage.builder()}.
+ * Use the static factory method to create immutable instances:
+ * {@code SloackMessage.of()}.
  */
 @SuppressWarnings("all")
 @ParametersAreNonnullByDefault
@@ -25,9 +27,16 @@ import javax.annotation.concurrent.NotThreadSafe;
 @Immutable
 public final class SloackMessage implements AbstractSloackMessage {
   private final String name;
+  private final String message;
 
-  private SloackMessage(String name) {
+  private SloackMessage(String name, String message) {
+    this.name = Preconditions.checkNotNull(name, "name");
+    this.message = Preconditions.checkNotNull(message, "message");
+  }
+
+  private SloackMessage(SloackMessage original, String name, String message) {
     this.name = name;
+    this.message = message;
   }
 
   /**
@@ -40,6 +49,15 @@ public final class SloackMessage implements AbstractSloackMessage {
   }
 
   /**
+   * @return The value of the {@code message} attribute
+   */
+  @JsonProperty
+  @Override
+  public String getMessage() {
+    return message;
+  }
+
+  /**
    * Copy the current immutable object by setting a value for the {@link AbstractSloackMessage#getName() name} attribute.
    * A shallow reference equality check is used to prevent copying of the same value by returning {@code this}.
    * @param value A new value for name
@@ -48,7 +66,19 @@ public final class SloackMessage implements AbstractSloackMessage {
   public final SloackMessage withName(String value) {
     if (this.name == value) return this;
     String newValue = Preconditions.checkNotNull(value, "name");
-    return new SloackMessage(newValue);
+    return new SloackMessage(this, newValue, this.message);
+  }
+
+  /**
+   * Copy the current immutable object by setting a value for the {@link AbstractSloackMessage#getMessage() message} attribute.
+   * A shallow reference equality check is used to prevent copying of the same value by returning {@code this}.
+   * @param value A new value for message
+   * @return A modified copy of the {@code this} object
+   */
+  public final SloackMessage withMessage(String value) {
+    if (this.message == value) return this;
+    String newValue = Preconditions.checkNotNull(value, "message");
+    return new SloackMessage(this, this.name, newValue);
   }
 
   /**
@@ -63,17 +93,19 @@ public final class SloackMessage implements AbstractSloackMessage {
   }
 
   private boolean equalTo(SloackMessage another) {
-    return name.equals(another.name);
+    return name.equals(another.name)
+        && message.equals(another.message);
   }
 
   /**
-   * Computes a hash code from attributes: {@code name}.
+   * Computes a hash code from attributes: {@code name}, {@code message}.
    * @return hashCode value
    */
   @Override
   public int hashCode() {
     int h = 31;
     h = h * 17 + name.hashCode();
+    h = h * 17 + message.hashCode();
     return h;
   }
 
@@ -86,6 +118,7 @@ public final class SloackMessage implements AbstractSloackMessage {
   public String toString() {
     return MoreObjects.toStringHelper("SloackMessage")
         .add("name", name)
+        .add("message", message)
         .toString();
   }
 
@@ -97,12 +130,19 @@ public final class SloackMessage implements AbstractSloackMessage {
   @JsonDeserialize
   static final class Json implements AbstractSloackMessage {
     @Nullable String name;
+    @Nullable String message;
 
     public void setName(String name) {
       this.name = name;
     }
+
+    public void setMessage(String message) {
+      this.message = message;
+    }
     @Override
     public String getName() { throw new UnsupportedOperationException(); }
+    @Override
+    public String getMessage() { throw new UnsupportedOperationException(); }
   }
 
   /**
@@ -117,7 +157,20 @@ public final class SloackMessage implements AbstractSloackMessage {
     if (json.name != null) {
       builder.name(json.name);
     }
+    if (json.message != null) {
+      builder.message(json.message);
+    }
     return builder.build();
+  }
+
+  /**
+   * Construct a new immutable {@code SloackMessage} instance.
+   * @param name The value for the {@code name} attribute
+   * @param message The value for the {@code message} attribute
+   * @return An immutable SloackMessage instance
+   */
+  public static SloackMessage of(String name, String message) {
+    return new SloackMessage(name, message);
   }
 
   /**
@@ -154,9 +207,11 @@ public final class SloackMessage implements AbstractSloackMessage {
   @NotThreadSafe
   public static final class Builder {
     private static final long INIT_BIT_NAME = 0x1L;
-    private long initBits = 0x1;
+    private static final long INIT_BIT_MESSAGE = 0x2L;
+    private long initBits = 0x3;
 
     private @Nullable String name;
+    private @Nullable String message;
 
     private Builder() {}
 
@@ -170,6 +225,7 @@ public final class SloackMessage implements AbstractSloackMessage {
     public final Builder from(AbstractSloackMessage instance) {
       Preconditions.checkNotNull(instance, "instance");
       name(instance.getName());
+      message(instance.getMessage());
       return this;
     }
 
@@ -183,6 +239,17 @@ public final class SloackMessage implements AbstractSloackMessage {
       initBits &= ~INIT_BIT_NAME;
       return this;
     }
+
+    /**
+     * Initializes the value for the {@link AbstractSloackMessage#getMessage() message} attribute.
+     * @param message The value for message 
+     * @return {@code this} builder for use in a chained invocation
+     */
+    public final Builder message(String message) {
+      this.message = Preconditions.checkNotNull(message, "message");
+      initBits &= ~INIT_BIT_MESSAGE;
+      return this;
+    }
     /**
      * Builds a new {@link com.zenika.msg.api.SloackMessage SloackMessage}.
      * @return An immutable instance of SloackMessage
@@ -190,11 +257,15 @@ public final class SloackMessage implements AbstractSloackMessage {
      */
     public SloackMessage build()
         throws IllegalStateException {
-      checkRequiredAttributes(); return new SloackMessage(name);
+      checkRequiredAttributes(); return new SloackMessage(null, name, message);
     }
 
     private boolean nameIsSet() {
       return (initBits & INIT_BIT_NAME) == 0;
+    }
+
+    private boolean messageIsSet() {
+      return (initBits & INIT_BIT_MESSAGE) == 0;
     }
 
     private void checkRequiredAttributes() throws IllegalStateException {
@@ -205,6 +276,7 @@ public final class SloackMessage implements AbstractSloackMessage {
     private String formatRequiredAttributesMessage() {
       List<String> attributes = Lists.newArrayList();
       if (!nameIsSet()) attributes.add("name");
+      if (!messageIsSet()) attributes.add("message");
       return "Cannot build SloackMessage, some of required attributes are not set " + attributes;
     }
   }

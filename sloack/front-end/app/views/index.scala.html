@@ -28,8 +28,10 @@
                     console.log("ws open");
                 };
                 ws.onmessage = function (evt) {
-                    var received_msg = evt.data;
-                    $("#rm").text(received_msg);
+                    var d = JSON.parse(evt.data);
+                    console.log(d);
+                    var received_msg = d.name + ">  " + d.message;
+                    $("#display").text(received_msg);
                 };
                 ws.onclose = function () {
                     console.log("close ws");
@@ -64,13 +66,13 @@
                 return $("body").data(key, val);
             }
 
-            function sendMessage(){
-                addJson("message","One message");
-                addJson("name","Michel");
+            function sendMessage() {
+                addJson("message", $("#message").val());
+                addJson("name", $("#name").val());
 
                 //$.get("/api/messages/", JSON.stringify(getjson()));
 
-               $.post(
+                $.post(
                         "/api/messages/",
                         JSON.stringify(getjson()),
                         function (data, status) {
@@ -92,12 +94,13 @@
     </head>
     <body >
 
-
-        <div id="display">
-
+        <div id="display" class="myDiv">
+            wait...
         </div>
-       <div id="wm">sdfsdf</div> <button class="btn btn-info" type="button" value="update" onclick="sendMessage()">Update filter
-    </button>
-       <div id="rm">sdfdf</div>
+
+        <button class="btn btn-info" type="button" value="update" onclick="sendMessage()">Update filter</button>
+        <input type="text" id="message" class="myDiv"/>
+
+        <input type="text" id="name" class="myDiv" />
     </body>
 </html>

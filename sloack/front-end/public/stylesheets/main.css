@@ -21,6 +21,6 @@
     font-size: 25px;
 }
 
-#wm, #rm {
+.myDiv {
     border: 1px dashed #000000;
 }
