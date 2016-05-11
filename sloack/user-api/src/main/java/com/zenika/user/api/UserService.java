@@ -8,38 +8,31 @@ import static com.lightbend.lagom.javadsl.api.Service.restCall;
 
 import akka.Done;
 import akka.NotUsed;
+import akka.stream.javadsl.Source;
 import com.lightbend.lagom.javadsl.api.Descriptor;
 import com.lightbend.lagom.javadsl.api.Service;
 import com.lightbend.lagom.javadsl.api.ServiceCall;
 import com.lightbend.lagom.javadsl.api.transport.Method;
 
-/**
- * The hello service interface.
- * <p>
- * This describes everything that Lagom needs to know about how to serve and
- * consume the HelloService.
- */
+import java.util.List;
+
+
 public interface UserService extends Service {
 
-  /**
-   * Example: curl http://localhost:9000/api/hello/Alice
-   */
-  ServiceCall<String, NotUsed, String> hello();
 
-  /**
-   * Example: curl -H "Content-Type: application/json" -X POST -d '{"name":
-   * "Hi"}' http://localhost:9000/api/hello/Alice
-   */
-  ServiceCall<String, UserInfo, Done> useGreeting();
+    ServiceCall<String, NotUsed, Done> signin();
 
-  @Override
-  default Descriptor descriptor() {
 
-    return named("userService").with(
-        restCall(Method.GET,  "/api/hello/:id",       hello()),
-        restCall(Method.POST, "/api/hello/:id",       useGreeting())
-      ).withAutoAcl(true);
+    ServiceCall<NotUsed, NotUsed, List<UserInfo>> users();
 
-  }
+    @Override
+    default Descriptor descriptor() {
+
+        return named("userService").with(
+                restCall(Method.POST, "/api/users/signin/:id", signin()),
+                restCall(Method.GET, "/api/users", users())
+        ).withAutoAcl(true);
+
+    }
 
 }

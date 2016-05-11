@@ -19,7 +19,9 @@ lazy val userImpl = project("user-impl")
     version := "1.0-SNAPSHOT",
     libraryDependencies ++= Seq(
       lagomJavadslPersistence,
-      lagomJavadslTestKit
+      lagomJavadslTestKit,
+      lagomJavadslImmutables,
+      lagomJavadslPubSub
     )
   )
   .settings(lagomForkedTestSettings: _*)
@@ -39,6 +41,7 @@ lazy val messageImpl = project("message-impl")
   .settings(
     libraryDependencies += lagomJavadslTestKit,
     libraryDependencies += lagomJavadslPubSub
+
 
   )
 
