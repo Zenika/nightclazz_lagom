@@ -13,6 +13,8 @@ import org.immutables.value.Value;
 @JsonDeserialize(as = SloackMessage.class)
 public interface AbstractSloackMessage {
 
+
+
     @Value.Parameter
     String getName();
     @Value.Parameter

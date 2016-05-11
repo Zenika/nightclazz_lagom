@@ -33,7 +33,7 @@ public interface UserService extends Service {
         return named("userService").with(
                 restCall(Method.POST, "/api/users/signin/:id", signin()),
                 restCall(Method.GET, "/api/users", users()),
-                namedCall("/api/usersstream", users())
+                namedCall("/api/usersstream", stream())
         ).withAutoAcl(true);
 
     }

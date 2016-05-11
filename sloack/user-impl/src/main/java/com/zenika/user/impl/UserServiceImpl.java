@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
 
         return (name, req) -> {
             PersistentEntityRef<UserCommand> refPersistance = persistentEntityRegistry.refFor(User.class, ROOM_ID);
-            PubSubRef pubsub = pubSubRegistry.refFor(TopicId.of(String.class, ROOM_ID));
+            PubSubRef<String> pubsub = pubSubRegistry.refFor(TopicId.of(String.class, ROOM_ID));
             pubsub.publish(name);
             return refPersistance.ask((new SignIn(name)));
         };
@@ -64,7 +64,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public ServiceCall<NotUsed, NotUsed, Source<String, NotUsed>> stream() {
         return (id,name) -> {
-            PubSubRef pubsub = pubSubRegistry.refFor(TopicId.of(String.class, ROOM_ID));
+            System.out.println("get");
+            PubSubRef<String> pubsub = pubSubRegistry.refFor(TopicId.of(String.class, ROOM_ID));
             return CompletableFuture.completedFuture(pubsub.subscriber());
         };
     }
