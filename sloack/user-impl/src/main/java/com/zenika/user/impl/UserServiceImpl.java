@@ -5,10 +5,13 @@ package com.zenika.user.impl;
 
 import akka.Done;
 import akka.NotUsed;
+import akka.stream.javadsl.Source;
 import com.lightbend.lagom.javadsl.api.ServiceCall;
 import com.lightbend.lagom.javadsl.persistence.PersistentEntityRef;
 import com.lightbend.lagom.javadsl.persistence.PersistentEntityRegistry;
+import com.lightbend.lagom.javadsl.pubsub.PubSubRef;
 import com.lightbend.lagom.javadsl.pubsub.PubSubRegistry;
+import com.lightbend.lagom.javadsl.pubsub.TopicId;
 import com.zenika.user.api.UserInfo;
 import com.zenika.user.api.UserService;
 import com.zenika.user.impl.UserCommand.SignIn;
@@ -17,6 +20,7 @@ import com.zenika.user.impl.UserCommand.Users;
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 
 /**
@@ -40,8 +44,10 @@ public class UserServiceImpl implements UserService {
     public ServiceCall<String, NotUsed, Done> signin() {
 
         return (name, req) -> {
-            PersistentEntityRef<UserCommand> ref = persistentEntityRegistry.refFor(User.class, ROOM_ID);
-            return ref.ask((new SignIn(name)));
+            PersistentEntityRef<UserCommand> refPersistance = persistentEntityRegistry.refFor(User.class, ROOM_ID);
+            PubSubRef pubsub = pubSubRegistry.refFor(TopicId.of(String.class, ROOM_ID));
+            pubsub.publish(name);
+            return refPersistance.ask((new SignIn(name)));
         };
     }
 
@@ -55,25 +61,13 @@ public class UserServiceImpl implements UserService {
 
     }
 
-  /*public ServiceCall<String, NotUsed, String> hello() {
-    return (id, request) -> {
-      // Look up the hello world entity for the given ID.
-      PersistentEntityRef<UserCommand> ref = persistentEntityRegistry.refFor(User.class, id);
-      // Ask the entity the Hello command.
-      return ref.ask(new Users(new ArrayList<UserInfo>()));
-    };
-  }
-
-
-    public ServiceCall<String, UserInfo, Done> useGreeting() {
-        return (id, request) -> {
-            // Look up the hello world entity for the given ID.
-            PersistentEntityRef<UserCommand> ref = persistentEntityRegistry.refFor(User.class, id);
-            // Tell the entity to use the greeting name specified.
-            return ref.ask(new SignIn(request.name));
+    @Override
+    public ServiceCall<NotUsed, NotUsed, Source<String, NotUsed>> stream() {
+        return (id,name) -> {
+            PubSubRef pubsub = pubSubRegistry.refFor(TopicId.of(String.class, ROOM_ID));
+            return CompletableFuture.completedFuture(pubsub.subscriber());
         };
-
     }
-    */
+
 
 }

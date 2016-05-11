@@ -5,6 +5,7 @@ package com.zenika.user.api;
 
 import static com.lightbend.lagom.javadsl.api.Service.named;
 import static com.lightbend.lagom.javadsl.api.Service.restCall;
+import static com.lightbend.lagom.javadsl.api.Service.namedCall;
 
 import akka.Done;
 import akka.NotUsed;
@@ -24,13 +25,15 @@ public interface UserService extends Service {
 
 
     ServiceCall<NotUsed, NotUsed, List<UserInfo>> users();
+    ServiceCall<NotUsed, NotUsed, Source<String,NotUsed>> stream();
 
     @Override
     default Descriptor descriptor() {
 
         return named("userService").with(
                 restCall(Method.POST, "/api/users/signin/:id", signin()),
-                restCall(Method.GET, "/api/users", users())
+                restCall(Method.GET, "/api/users", users()),
+                namedCall("/api/usersstream", users())
         ).withAutoAcl(true);
 
     }

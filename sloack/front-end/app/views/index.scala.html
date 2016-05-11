@@ -11,21 +11,44 @@
         <link rel="stylesheet" href="assets/stylesheets/main.css"/>
         <script type="application/javascript">
 
-            var mappingOperator = {"*": "mult", "/": "div", "+": "add", "-": "min"}
-            var isResult = false;
+
             $(function () {
 
-                WebSock();
+                example1 = new Vue({
+                    el: '#timeline',
+                    data: {
+                        items: []
+                    }
+                });
+
+                webSockMessage();
+                webSockUser();
 
 
             });
 
-            function WebSock() {
+            function webSockUser() {
+                // Google example code
+                ws = new WebSocket("ws://localhost:9000/api/usersstream");
+                ws.onopen = function () {
+                    // Web Socket is connected. You can send data by send() method
+                    console.log("ws users open");
+                };
+                ws.onmessage = function (evt) {
+                    var received_msg = evt.data;
+                    example1.items.push({message: received_msg})
+                };
+                ws.onclose = function () {
+                    console.log("close users ws");
+                }
+            }
+
+            function webSockMessage() {
                 // Google example code
                 ws = new WebSocket("ws://localhost:9000/api/messagestream");
                 ws.onopen = function () {
                     // Web Socket is connected. You can send data by send() method
-                    console.log("ws open");
+                    console.log("ws message open");
                 };
                 ws.onmessage = function (evt) {
                     var d = JSON.parse(evt.data);
@@ -34,7 +57,7 @@
                     $("#display").text(received_msg);
                 };
                 ws.onclose = function () {
-                    console.log("close ws");
+                    console.log("close message ws");
                 }
             }
 
@@ -102,5 +125,17 @@
         <input type="text" id="message" class="myDiv"/>
 
         <input type="text" id="name" class="myDiv" />
+
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div id="timeline" class="panel panel-default col-md-8">
+                <div v-for="item in items">
+                    {{ item.message }}
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
     </body>
 </html>

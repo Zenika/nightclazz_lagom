@@ -90,10 +90,5 @@ public class User extends PersistentEntity<UserCommand, UserEvent, UsersState> {
         return b.build();
     }
 
-    public static void main(String[] args) {
-        UsersList ul = UsersList.builder().build().withUsers(UserInfo.of("Martin"), UserInfo.of("Louis"));
-        System.out.print(ul.getUsers());
-
-    }
 
 }
