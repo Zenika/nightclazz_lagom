@@ -20,3 +20,7 @@
     color : #fcf8e3;
     font-size: 25px;
 }
+
+#wm, #rm {
+    border: 1px dashed #000000;
+}

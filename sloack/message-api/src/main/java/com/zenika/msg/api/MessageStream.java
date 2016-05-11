@@ -31,8 +31,8 @@ public interface MessageStream extends Service {
 
         return named("messageStream").with(
                 namedCall("/api/messagestream", stream()),
-                restCall(Method.POST, "/api/messages", message())
+                restCall(Method.POST, "/api/messages/", message())
 
-        );
+        ).withAutoAcl(true);
     }
 }

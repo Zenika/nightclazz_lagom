@@ -5,6 +5,7 @@ package com.zenika.msg.api.impl;
 
 import akka.NotUsed;
 import akka.stream.javadsl.Source;
+import com.google.inject.Inject;
 import com.lightbend.lagom.javadsl.api.ServiceCall;
 import com.lightbend.lagom.javadsl.pubsub.PubSubRef;
 import com.lightbend.lagom.javadsl.pubsub.PubSubRegistry;
@@ -25,6 +26,7 @@ public class MessageStreamImpl implements MessageStream {
 
     private PubSubRegistry pusub;
 
+    @Inject
     public MessageStreamImpl(PubSubRegistry pusub) {
         this.pusub = pusub;
     }

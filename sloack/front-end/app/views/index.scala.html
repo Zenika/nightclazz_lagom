@@ -15,25 +15,26 @@
             var isResult = false;
             $(function () {
 
+                WebSock();
 
-                function WebSocket() {
-                    // Google example code
-                    ws = new WebSocket("ws://localhost:9000/api/messagestream");
-                    ws.onopen = function () {
-                        // Web Socket is connected. You can send data by send() method
-                        console.log("ws open");
-                    };
-                    ws.onmessage = function (evt) {
-                        var received_msg = evt.data;
-                        $("#rm").text(received_msg);
-                    };
-                    ws.onclose = function () { // websocket is closed. };
-                        console.log("close ws");
-                    }
-                }
 
             });
 
+            function WebSock() {
+                // Google example code
+                ws = new WebSocket("ws://localhost:9000/api/messagestream");
+                ws.onopen = function () {
+                    // Web Socket is connected. You can send data by send() method
+                    console.log("ws open");
+                };
+                ws.onmessage = function (evt) {
+                    var received_msg = evt.data;
+                    $("#rm").text(received_msg);
+                };
+                ws.onclose = function () {
+                    console.log("close ws");
+                }
+            }
 
             function checkZero(val) {
                 if (val == "0") {
@@ -64,11 +65,13 @@
             }
 
             function sendMessage(){
-                addJson("mesage","One message");
+                addJson("message","One message");
                 addJson("name","Michel");
 
-                $.post(
-                        "/api/messages",
+                //$.get("/api/messages/", JSON.stringify(getjson()));
+
+               $.post(
+                        "/api/messages/",
                         JSON.stringify(getjson()),
                         function (data, status) {
                             console.log(status + "-" + data);
@@ -93,8 +96,8 @@
         <div id="display">
 
         </div>
-       <div id="wm"></div> <button class="btn btn-info" type="button" value="update" onclick="sendMessage()">Update filter
+       <div id="wm">sdfsdf</div> <button class="btn btn-info" type="button" value="update" onclick="sendMessage()">Update filter
     </button>
-       <div id="rm"></div>
+       <div id="rm">sdfdf</div>
     </body>
 </html>
