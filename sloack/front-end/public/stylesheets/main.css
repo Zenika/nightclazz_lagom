@@ -24,3 +24,8 @@
 .myDiv {
     border: 1px solid #000000;
 }
+
+#display, #listusers {
+    height: 30%;
+}
+

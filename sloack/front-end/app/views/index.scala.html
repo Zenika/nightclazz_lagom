@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Calculator</title>
+        <title>Sloack!!</title>
         <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="assets/javascripts/vuejs/vue.min.js"></script>
         <script type="text/javascript" src="assets/javascripts/jquery/jquery-2.2.3.min.js"></script>
@@ -14,8 +14,15 @@
 
             $(function () {
 
-                example1 = new Vue({
-                    el: '#timeline',
+                users = new Vue({
+                    el: '#listusers',
+                    data: {
+                        items: []
+                    }
+                });
+
+                messages = new Vue({
+                    el: '#display',
                     data: {
                         items: []
                     }
@@ -23,6 +30,8 @@
 
                 webSockMessage();
                 webSockUser();
+
+                loadinitUsers();
 
 
             });
@@ -36,7 +45,7 @@
                 };
                 ws.onmessage = function (evt) {
                     var received_msg = evt.data;
-                    example1.items.push({message: received_msg})
+                    users.items.push({message: received_msg})
                 };
                 ws.onclose = function () {
                     console.log("close users ws");
@@ -52,9 +61,10 @@
                 };
                 wsuser.onmessage = function (evt) {
                     var d = JSON.parse(evt.data);
-                    console.log(d);
-                    var received_msg = d.name + ">  " + d.message;
-                    $("#display").text(received_msg);
+
+                    var newmsg = d.name + ">  " + d.message;
+                    messages.items.push({message: newmsg})
+                    //$("#display").text(received_msg);
                 };
                 wsuser.onclose = function () {
                     console.log("close message ws");
@@ -89,13 +99,49 @@
                 return $("body").data(key, val);
             }
 
+            function loadinitUsers(){
+
+                $.get(
+                        "/api/users",
+                        function (data, status) {
+                            console.log(status + "-" + data);
+                            //var d = JSON.parse(data);
+                            //console.log(data)
+                            _.each(data,function(d){
+                                users.items.push({message: d.name})
+                            })
+
+
+                        },
+                        "json"
+                ).fail(function () {
+                    $("#display").val("Error!");
+                })
+
+
+            }
+
             function sendMessage() {
+                //console.log("hello");
                 addJson("message", $("#message").val());
-                addJson("name", $("#name").val());
+                addJson("name", $("#loginName").val());
 
                 $.post(
                         "/api/messages/",
                         JSON.stringify(getjson()),
+                        function (data, status) {
+                            console.log(status + "-" + data);
+                        },
+                        "json"
+                ).fail(function () {
+                    $("#display").val("Error!");
+                })
+            }
+
+            function signin() {
+
+                $.post(
+                        "/api/users/signin/" + $("#loginName").val(),
                         function (data, status) {
                             console.log(status + "-" + data);
                         },
@@ -115,37 +161,93 @@
     </head>
     <body >
 
+        <div class="page-header">
+            <div class="row">
+                <div class="col-xs-8">
+                   &nbsp;
+                </div>
+                <div class="col-xs-4    ">
+                        &nbsp;
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-xs-2">
+                        &nbsp;
+                </div>
+                <div class="col-xs-8" >
+                    <span id="title"><h1>Sloack!</h1></span>
+                </div>
+                <div class="col-xs-2">
+                        &nbsp;
+                </div>
+
+            </div>
+        </div>
 
 
 
-        <input type="text" id="name" class="myDiv" />
+
+
 
         <div class="row">
-            <div  class="col-md-12">&nbsp;</div>
+            <div class="col-md-1">&nbsp;</div>
+            <div id="headerCol" class="col-md-1">
+                <input type="text" id="loginName" class="myDiv" />
+            </div>
+            <div class="col-md-1">&nbsp;</div>
+            <div class="col-md-7"><button class="btn btn-info" type="button" value="update" onclick="signin()">Signin!</button>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+
         <div class="row">
-            <div  class="col-md-12">&nbsp;</div>
+            <div class="col-md-12">&nbsp;</div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-12">&nbsp;</div>
         </div>
 
         <div class="row">
-            <div id="timeline" class="panel panel-default col-md-2">
+            <div class="col-md-1">&nbsp;</div>
+            <div id="headerCol" class="col-md-1">
+                <h3>Users</h3>
+            </div>
+            <div class="col-md-1">&nbsp;</div>
+            <div class="col-md-7">&nbsp;
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-1">&nbsp;</div>
+            <div id="listusers" class="panel panel-default col-md-1">
                 <div v-for="item in items">
                     {{ item.message }}
                 </div>
             </div>
-            <div  class="col-md-1">&nbsp;</div>
+            <div class="col-md-1">&nbsp;</div>
             <div id="display" class="col-md-7 panel panel-default">
+                <div v-for="item in items">
+                    {{ item.message }}
+                </div>
 
             </div>
-
             <div class="col-md-2"></div>
         </div>
 
         <div class="row">
-            <div class="col-md-2">qsdsdq&nbsp;</div>
-            <div class="col-md-3">
-                <input type="text" id="message" class="myDiv" size="100"/>
+            <div class="col-md-3">&nbsp;</div>
+
+            <div class="col-md-6">
+                <input type="text" id="message" class="myDiv" size="50"/>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-1">
                 <button class="btn btn-info" type="button" value="update" onclick="sendMessage()">Send!</button>
             </div>
             <div class="col-md-2"></div>

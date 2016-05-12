@@ -6,8 +6,10 @@ package com.zenika.user.impl;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.lightbend.lagom.javadsl.persistence.PersistentEntity;
 
 import akka.Done;
@@ -70,7 +72,7 @@ public class User extends PersistentEntity<UserCommand, UserEvent, UsersState> {
                 evt -> {
 
 
-                    final List<UserInfo> newList = Lists.newArrayList(UserInfo.of(evt.name));
+                    final Set<UserInfo> newList = Sets.newHashSet(UserInfo.of(evt.name));
                     newList.addAll(state().users.getUsers());
 
 
