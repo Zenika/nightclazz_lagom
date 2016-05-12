@@ -155,6 +155,7 @@
                                 $(".logContent").append("<h3>Hi!, " + $("#loginName").val() + "</h3>")
                                 $.connected = true;
                                 $('#error').hide();
+                                $(".signinButton").hide();
                             },
                             "json"
                     ).fail(function () {
@@ -210,7 +211,7 @@
                 <input type="text" id="loginName" class="toHide" />
             </div>
             <div class="col-md-1">&nbsp;</div>
-            <div class="col-md-7"><button class="btn btn-info" type="button" value="update" onclick="signin()">Signin!</button>
+            <div class="col-md-7"><button class="btn btn-info signinButton" type="button" value="update" onclick="signin()">Signin!</button>
             </div>
             <div class="col-md-2"></div>
         </div>
