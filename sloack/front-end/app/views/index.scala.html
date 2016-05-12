@@ -145,20 +145,24 @@
 
             function signin() {
 
-                $.post(
-                        "/api/users/signin/" + $("#loginName").val(),
-                        function (data, status) {
-                            console.log(status + "-" + data);
-                            addJson("loginname", $("#loginName").val());
-                            $("#loginName").hide();
-                            $(".logContent").append("<h3>Hi!, "+$("#loginName").val() + "</h3>")
-                            $.connected = true;
-                            $('#error').hide();
-                        },
-                        "json"
-                ).fail(function () {
-                    $("#display").val("Error!");
-                })
+               if($.trim($("#loginName").val()).length !=0){
+                    $.post(
+                            "/api/users/signin/" + $("#loginName").val(),
+                            function (data, status) {
+                                console.log(status + "-" + data);
+                                addJson("loginname", $("#loginName").val());
+                                $("#loginName").hide();
+                                $(".logContent").append("<h3>Hi!, " + $("#loginName").val() + "</h3>")
+                                $.connected = true;
+                                $('#error').hide();
+                            },
+                            "json"
+                    ).fail(function () {
+                        $(".logContent").append("<h3><span id='error'>Error, see logs! or call Fabrice :)</span></h3>");
+                    })
+                }else{
+                    $(".logContent").append("<h3><span id='error'>Fill with your name before!</span></h3>");
+                }
             }
 
 
