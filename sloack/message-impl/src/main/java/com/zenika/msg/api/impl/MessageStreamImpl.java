@@ -25,28 +25,25 @@ public class MessageStreamImpl implements MessageStream {
     private static final String TOPIC_ID = "sloackChat";
     private final Logger log = LoggerFactory.getLogger(MessageStreamImpl.class);
 
-    private PubSubRegistry pusub;
 
-    @Inject
-    public MessageStreamImpl(PubSubRegistry pusub) {
-        this.pusub = pusub;
+
+
+    public MessageStreamImpl() {
+         /*TODO Add PubSubRegistry to manage publish subscribe*/
     }
 
     @Override
-    public ServiceCall<NotUsed, SloackMessage, NotUsed> message() {
+    public ServiceCall<NotUsed, NotUsed, NotUsed> message() {
         return (id, message) -> {
-            final PubSubRef<SloackMessage> ref = pusub.refFor(TopicId.of(SloackMessage.class, TOPIC_ID));
-            log.info("message :" + message);
-            ref.publish(message);
+            /*TODO : publishes new incoming message*/
             return CompletableFuture.completedFuture(NotUsed.getInstance());
         };
     }
 
     @Override
-    public ServiceCall<NotUsed, NotUsed, Source<SloackMessage, NotUsed>> stream() {
+    public ServiceCall<NotUsed, NotUsed, NotUsed> stream() {
         return (id, message) -> {
-            final PubSubRef<SloackMessage> ref = pusub.refFor(TopicId.of(SloackMessage.class, TOPIC_ID));
-            return CompletableFuture.completedFuture(ref.subscriber());
+           /* TODO : Send to all subscriber the message*/
 
         };
     }

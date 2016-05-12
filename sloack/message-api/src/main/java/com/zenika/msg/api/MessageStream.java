@@ -22,9 +22,16 @@ import com.lightbend.lagom.javadsl.api.transport.Method;
  */
 public interface MessageStream extends Service {
 
-    ServiceCall<NotUsed, NotUsed, Source<SloackMessage, NotUsed>> stream();
+    /* TODO :Define right type below. Tips : We are exposing a stream on the last message
+    * 
+    * */
+    ServiceCall<NotUsed, NotUsed, NotUsed> stream();
 
-    ServiceCall<NotUsed, SloackMessage, NotUsed> message();
+    /*
+     TODO :Define right type below. Tips : The message that is coming with request containts name and message,
+      *look for one special type dedicated
+    * */
+    ServiceCall<NotUsed, NotUsed, NotUsed> message();
 
     @Override
     default Descriptor descriptor() {

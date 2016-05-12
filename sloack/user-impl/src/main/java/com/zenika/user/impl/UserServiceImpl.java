@@ -31,13 +31,13 @@ public class UserServiceImpl implements UserService {
 
     private static final String ROOM_ID = "mainRoom";
     private final PersistentEntityRegistry persistentEntityRegistry;
-    private final PubSubRegistry pubSubRegistry;
+
 
     @Inject
-    public UserServiceImpl(PersistentEntityRegistry persistentEntityRegistry, PubSubRegistry pubSubRegistry) {
+    public UserServiceImpl(PersistentEntityRegistry persistentEntityRegistry) {
         this.persistentEntityRegistry = persistentEntityRegistry;
         persistentEntityRegistry.register(User.class);
-        this.pubSubRegistry = pubSubRegistry;
+        /*TODO Add PubSubRegistry to manage publish subscribe*/
     }
 
     @Override
@@ -45,14 +45,14 @@ public class UserServiceImpl implements UserService {
 
         return (name, req) -> {
             PersistentEntityRef<UserCommand> refPersistance = persistentEntityRegistry.refFor(User.class, ROOM_ID);
-            PubSubRef<String> pubsub = pubSubRegistry.refFor(TopicId.of(String.class, ROOM_ID));
-            pubsub.publish(name);
+           /*TODO : publish new user that just signed in*/
+
             return refPersistance.ask((new SignIn(name)));
         };
     }
 
     @Override
-    public ServiceCall<NotUsed, NotUsed, List<UserInfo>> users() {
+    public ServiceCall<NotUsed, NotUsed, NotUsed> users() {
         return (id, req) -> {
 
             PersistentEntityRef<UserCommand> ref = persistentEntityRegistry.refFor(User.class, ROOM_ID);
@@ -62,11 +62,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ServiceCall<NotUsed, NotUsed, Source<String, NotUsed>> stream() {
+    public ServiceCall<NotUsed, NotUsed, NotUsed> stream() {
         return (id,name) -> {
-            System.out.println("get");
-            PubSubRef<String> pubsub = pubSubRegistry.refFor(TopicId.of(String.class, ROOM_ID));
-            return CompletableFuture.completedFuture(pubsub.subscriber());
+            /* TODO : Send to all subscriber data*/
+
         };
     }
 

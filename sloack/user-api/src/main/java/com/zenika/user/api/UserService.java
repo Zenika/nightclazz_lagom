@@ -21,11 +21,14 @@ import java.util.List;
 public interface UserService extends Service {
 
 
-    ServiceCall<String, NotUsed, Done> signin();
+    /*TODO : Define right type below. Tips : we are using only id in the path*/
+    ServiceCall<NotUsed, NotUsed, Done> signin();
 
+    /*TODO : Define right type below. Tips : We are exposing a Users List by traditionnal GET query*/
+    ServiceCall<NotUsed, NotUsed, NotUsed> users();
 
-    ServiceCall<NotUsed, NotUsed, List<UserInfo>> users();
-    ServiceCall<NotUsed, NotUsed, Source<String,NotUsed>> stream();
+    /*TODO :Define right type below. Tips : We are exposing a stream on the last user that has been signed in*/
+    ServiceCall<NotUsed, NotUsed, NotUsed> stream();
 
     @Override
     default Descriptor descriptor() {
