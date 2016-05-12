@@ -1,0 +1,160 @@
+<html>
+    <head>
+        <title>Calculator</title>
+        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="assets/javascripts/vuejs/vue.min.js"></script>
+        <script type="text/javascript" src="assets/javascripts/jquery/jquery-2.2.3.min.js"></script>
+        <script type="text/javascript" src="assets/javascripts/bootstrap/bootstrap.js"></script>
+        <script type="text/javascript" src="assets/javascripts/underscore/underscore.js"></script>
+        <link rel="stylesheet" href="assets/stylesheets/bootstrap/bootstrap.min.css"/>
+        <link rel="stylesheet" href="assets/stylesheets/bootstrap/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="assets/stylesheets/main.css"/>
+        <script type="application/javascript">
+
+            var mappingOperator = {"*": "mult", "/": "div", "+": "add", "-": "min"}
+            var isResult = false;
+            $(function () {
+                $(".operand").click(function () {
+                    if (isResult) {
+                        $("#display").val(checkZero($(this).text()));
+                        isResult = false;
+                    } else {
+                        console.log("ert")
+                        $("#display").val(checkZero($("#display").val()) + $(this).text());
+                    }
+                })
+
+
+                $(".operator").click(function () {
+                    isResult = false;
+                    var operator = $(this).text();
+                    if (checkDoublon(operator)) {
+                        var op1 = $("#display").val();
+                        $("#display").val(checkZero(op1) + operator);
+                        addJson("op1", op1);
+                        addJson("operateur", operator);
+                    }
+                });
+
+
+                $("#equal").click(function () {
+                    addJson("op2", getOp2($("#display").val()));
+                    $.post(
+                            "/api/calculator/" + mappingOperator[getjson()["operateur"]],
+                            JSON.stringify(getjson()),
+                            function (data, status) {
+                                console.log(status + "-" + data);
+                                $("#display").val(data);
+                                isResult = true;
+                            },
+                            "json"
+                    ).fail(function () {
+                        $("#display").val("Error!");
+                    })
+                })
+
+                $("#del").click(function () {
+                    $("#display").val("0");
+                    $("body").removeData();
+                    isResult = false;
+                });
+
+            });
+
+
+            function checkZero(val) {
+                if (val == "0") {
+                    return ""
+                } else {
+                    return val;
+                }
+            }
+
+            function checkDoublon(op) {
+                var currentDisp = $("#display").val();
+                return (currentDisp.indexOf(op) == -1) && (_.intersection(_.toArray(currentDisp), ["*", "/", "+", "-"]).length == 0);
+            }
+
+            function getOp2(val) {
+                if (val != "") {
+                    return val.split($("body").data("operateur"))[1];
+                } else {
+                    return "";
+                }
+            }
+
+            function getjson() {
+                return $("body").data();
+            }
+            function addJson(key, val) {
+                return $("body").data(key, val);
+            }
+
+        </script>
+
+    </head>
+    <body >
+        <div class="page-header">
+            <div class="row">
+                <div class="col-xs-8">
+                    <img src="https://zenika.com/images/logo/Logo_arrondi_Horizontal.png">
+                </div>
+                <div class="col-xs-4    ">
+                        &nbsp;
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-xs-2">
+                        &nbsp;
+                </div>
+                <div class="col-xs-8" >
+                    <span id="title"><h1>Calculator</h1></span>
+                </div>
+                <div class="col-xs-2">
+                    &nbsp;
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-2">&nbsp;</div>
+                <div class="col-xs-8 " id="result"><h1><input id="display" type="text" value="0"/></h1></div>
+                <div class="col-xs-2">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">&nbsp;</div>
+                <div class="col-xs-2 omb operand"><h1>7</h1></div>
+                <div class="col-xs-2 omb operand"><h1>8</h1></div>
+                <div class="col-xs-2 omb operand"><h1>9</h1></div>
+                <div class="col-xs-2 omb operator"><h1>+</h1></div>
+                <div class="col-xs-2">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">&nbsp;</div>
+                <div class="col-xs-2 omb operand"><h1>4</h1></div>
+                <div class="col-xs-2 omb operand"><h1>5</h1></div>
+                <div class="col-xs-2 omb operand"><h1>6</h1></div>
+                <div class="col-xs-2 omb operator"><h1>-</h1></div>
+                <div class="col-xs-2 ">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">&nbsp;</div>
+                <div class="col-xs-2 omb operand"><h1>1</h1></div>
+                <div class="col-xs-2 omb operand"><h1>2</h1></div>
+                <div class="col-xs-2 omb operand"><h1>3</h1></div>
+                <div class="col-xs-2 omb operator"><h1>/</h1></div>
+                <div class="col-xs-2">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">&nbsp;</div>
+                <div class="col-xs-2 omb" id="del"><h1>Del</h1></div>
+                <div class="col-xs-2 omb operand"><h1>0</h1></div>
+                <div class="col-xs-2 omb" id="equal"><h1>=</h1></div>
+                <div class="col-xs-2 omb operator"><h1>*</h1></div>
+            </div>
+        </div>
+    </body>
+</html>

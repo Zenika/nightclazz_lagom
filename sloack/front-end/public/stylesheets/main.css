@@ -1,0 +1,35 @@
+.omb {
+    box-shadow: 4px 3px 1px #aaa;
+    border: 1px solid #000;
+    margin: 1px 14px 1px 1px;
+}
+
+.operand, .operator, #equal, #del{
+    background: #fcf8e3;
+}
+#result.omb {
+
+    margin: 1px 14px 16px 1px;
+}
+
+.page-header {
+    background: #dc143c !important;
+}
+
+#title {
+    color : #fcf8e3;
+    font-size: 25px;
+}
+
+.myDiv {
+    border: 1px solid #000000;
+}
+
+#display, #listusers {
+    height: 30%;
+}
+
+#error{
+    color: #761c19;
+}
+
