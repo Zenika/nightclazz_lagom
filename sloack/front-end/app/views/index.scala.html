@@ -14,6 +14,7 @@
 
             $(function () {
 
+                $.connected = false
                 users = new Vue({
                     el: '#listusers',
                     data: {
@@ -64,7 +65,7 @@
 
                     var newmsg = d.name + ">  " + d.message;
                     messages.items.push({message: newmsg})
-                    //$("#display").text(received_msg);
+
                 };
                 wsuser.onclose = function () {
                     console.log("close message ws");
@@ -122,20 +123,24 @@
             }
 
             function sendMessage() {
-                //console.log("hello");
-                addJson("message", $("#message").val());
-                addJson("name", $("#loginName").val());
+                if($.connected) {
+                    //console.log("hello");
+                    addJson("message", $("#message").val());
+                    addJson("name", $("#loginName").val());
 
-                $.post(
-                        "/api/messages/",
-                        JSON.stringify(getjson()),
-                        function (data, status) {
-                            console.log(status + "-" + data);
-                        },
-                        "json"
-                ).fail(function () {
-                    $("#display").val("Error!");
-                })
+                    $.post(
+                            "/api/messages/",
+                            JSON.stringify(getjson()),
+                            function (data, status) {
+                                console.log(status + "-" + data);
+                            },
+                            "json"
+                    ).fail(function () {
+                        $("#display").val("Error!");
+                    })
+                }else{
+                    $(".logContent").append("<h3><span id='error'>Signin before!</span></h3>");
+                }
             }
 
             function signin() {
@@ -144,6 +149,11 @@
                         "/api/users/signin/" + $("#loginName").val(),
                         function (data, status) {
                             console.log(status + "-" + data);
+                            addJson("loginname", $("#loginName").val());
+                            $("#loginName").hide();
+                            $(".logContent").append("<h3>Hi!, "+$("#loginName").val() + "</h3>")
+                            $.connected = true;
+                            $('#error').hide();
                         },
                         "json"
                 ).fail(function () {
@@ -192,8 +202,8 @@
 
         <div class="row">
             <div class="col-md-1">&nbsp;</div>
-            <div id="headerCol" class="col-md-1">
-                <input type="text" id="loginName" class="myDiv" />
+            <div id="headerCol" class="col-md-1 logContent">
+                <input type="text" id="loginName" class="toHide" />
             </div>
             <div class="col-md-1">&nbsp;</div>
             <div class="col-md-7"><button class="btn btn-info" type="button" value="update" onclick="signin()">Signin!</button>
@@ -215,7 +225,7 @@
         <div class="row">
             <div class="col-md-1">&nbsp;</div>
             <div id="headerCol" class="col-md-1">
-                <h3>Users</h3>
+                <h4>Members</h4>
             </div>
             <div class="col-md-1">&nbsp;</div>
             <div class="col-md-7">&nbsp;
