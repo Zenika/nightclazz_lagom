@@ -1,0 +1,270 @@
+<html>
+    <head>
+        <title>Sloack!!</title>
+        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="assets/javascripts/vuejs/vue.min.js"></script>
+        <script type="text/javascript" src="assets/javascripts/jquery/jquery-2.2.3.min.js"></script>
+        <script type="text/javascript" src="assets/javascripts/bootstrap/bootstrap.js"></script>
+        <script type="text/javascript" src="assets/javascripts/underscore/underscore.js"></script>
+        <link rel="stylesheet" href="assets/stylesheets/bootstrap/bootstrap.min.css"/>
+        <link rel="stylesheet" href="assets/stylesheets/bootstrap/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="assets/stylesheets/main.css"/>
+        <script type="application/javascript">
+
+
+            $(function () {
+
+                $.connected = false
+                users = new Vue({
+                    el: '#listusers',
+                    data: {
+                        items: []
+                    }
+                });
+
+                messages = new Vue({
+                    el: '#display',
+                    data: {
+                        items: []
+                    }
+                });
+
+                webSockMessage();
+                webSockUser();
+
+                loadinitUsers();
+
+
+            });
+
+            function webSockUser() {
+                // Google example code
+                ws = new WebSocket("ws://localhost:9000/api/usersstream");
+                ws.onopen = function () {
+                    // Web Socket is connected. You can send data by send() method
+                    console.log("ws users open");
+                };
+                ws.onmessage = function (evt) {
+                    var received_msg = evt.data;
+                    users.items.push({message: received_msg})
+                };
+                ws.onclose = function () {
+                    console.log("close users ws");
+                }
+            }
+
+            function webSockMessage() {
+
+                wsuser = new WebSocket("ws://localhost:9000/api/messagestream");
+                wsuser.onopen = function () {
+                    // Web Socket is connected. You can send data by send() method
+                    console.log("ws message open");
+                };
+                wsuser.onmessage = function (evt) {
+                    var d = JSON.parse(evt.data);
+
+                    var newmsg = d.name + ">  " + d.message;
+                    messages.items.push({message: newmsg})
+
+                };
+                wsuser.onclose = function () {
+                    console.log("close message ws");
+                }
+            }
+
+            function checkZero(val) {
+                if (val == "0") {
+                    return ""
+                } else {
+                    return val;
+                }
+            }
+
+            function checkDoublon(op) {
+                var currentDisp = $("#display").val();
+                return (currentDisp.indexOf(op) == -1) && (_.intersection(_.toArray(currentDisp), ["*", "/", "+", "-"]).length == 0);
+            }
+
+            function getOp2(val) {
+                if (val != "") {
+                    return val.split($("body").data("operateur"))[1];
+                } else {
+                    return "";
+                }
+            }
+
+            function getjson() {
+                return $("body").data();
+            }
+            function addJson(key, val) {
+                return $("body").data(key, val);
+            }
+
+            function loadinitUsers(){
+
+                $.get(
+                        "/api/users",
+                        function (data, status) {
+                            console.log(status + "-" + data);
+                            //var d = JSON.parse(data);
+                            //console.log(data)
+                            _.each(data,function(d){
+                                users.items.push({message: d.name})
+                            })
+
+
+                        },
+                        "json"
+                ).fail(function () {
+                    $("#display").val("Error!");
+                })
+
+
+            }
+
+            function sendMessage() {
+                if($.connected) {
+                    //console.log("hello");
+                    addJson("message", $("#message").val());
+                    addJson("name", $("#loginName").val());
+
+                    $.post(
+                            "/api/messages/",
+                            JSON.stringify(getjson()),
+                            function (data, status) {
+                                console.log(status + "-" + data);
+                            },
+                            "json"
+                    ).fail(function () {
+                        $("#display").val("Error!");
+                    })
+                }else{
+                    $(".logContent").append("<h3><span id='error'>Signin before!</span></h3>");
+                }
+            }
+
+            function signin() {
+
+               if($.trim($("#loginName").val()).length !=0){
+                    $.post(
+                            "/api/users/signin/" + $("#loginName").val(),
+                            function (data, status) {
+                                console.log(status + "-" + data);
+                                addJson("loginname", $("#loginName").val());
+                                $("#loginName").hide();
+                                $(".logContent").append("<h3>Hi!, " + $("#loginName").val() + "</h3>")
+                                $.connected = true;
+                                $('#error').hide();
+                            },
+                            "json"
+                    ).fail(function () {
+                        $(".logContent").append("<h3><span id='error'>Error, see logs! or call Fabrice :)</span></h3>");
+                    })
+                }else{
+                    $(".logContent").append("<h3><span id='error'>Fill with your name before!</span></h3>");
+                }
+            }
+
+
+
+
+
+
+        </script>
+
+    </head>
+    <body >
+
+        <div class="page-header">
+            <div class="row">
+                <div class="col-xs-8">
+                   &nbsp;
+                </div>
+                <div class="col-xs-4    ">
+                        &nbsp;
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-xs-2">
+                        &nbsp;
+                </div>
+                <div class="col-xs-8" >
+                    <span id="title"><h1>Sloack!</h1></span>
+                </div>
+                <div class="col-xs-2">
+                        &nbsp;
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-1">&nbsp;</div>
+            <div id="headerCol" class="col-md-1 logContent">
+                <input type="text" id="loginName" class="toHide" />
+            </div>
+            <div class="col-md-1">&nbsp;</div>
+            <div class="col-md-7"><button class="btn btn-info" type="button" value="update" onclick="signin()">Signin!</button>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">&nbsp;</div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-12">&nbsp;</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1">&nbsp;</div>
+            <div id="headerCol" class="col-md-1">
+                <h4>Members</h4>
+            </div>
+            <div class="col-md-1">&nbsp;</div>
+            <div class="col-md-7">&nbsp;
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-1">&nbsp;</div>
+            <div id="listusers" class="panel panel-default col-md-1">
+                <div v-for="item in items">
+                    {{ item.message }}
+                </div>
+            </div>
+            <div class="col-md-1">&nbsp;</div>
+            <div id="display" class="col-md-7 panel panel-default">
+                <div v-for="item in items">
+                    {{ item.message }}
+                </div>
+
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">&nbsp;</div>
+
+            <div class="col-md-6">
+                <input type="text" id="message" class="myDiv" size="50"/>
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-info" type="button" value="update" onclick="sendMessage()">Send!</button>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </body>
+</html>
