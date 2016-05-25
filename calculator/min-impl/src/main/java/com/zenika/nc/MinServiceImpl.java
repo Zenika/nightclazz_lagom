@@ -10,8 +10,8 @@ import static java.util.concurrent.CompletableFuture.completedFuture;
  */
 public class MinServiceImpl implements MinService {
     @Override
-    public ServiceCall<NotUsed, Operandes, Integer> op() {
-        return (id, operandes) -> completedFuture(operandes.getOp1() - operandes.getOp2());
+    public ServiceCall<Operandes, Integer> op() {
+        return (operandes) -> completedFuture(operandes.getOp1() - operandes.getOp2());
 
     }
 }

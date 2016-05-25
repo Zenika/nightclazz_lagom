@@ -13,6 +13,7 @@ import com.lightbend.lagom.javadsl.api.Descriptor;
 import com.lightbend.lagom.javadsl.api.Service;
 import com.lightbend.lagom.javadsl.api.ServiceCall;
 import com.lightbend.lagom.javadsl.api.transport.Method;
+import static com.lightbend.lagom.javadsl.api.Service.*;
 
 /**
  * The hello stream interface.
@@ -22,16 +23,16 @@ import com.lightbend.lagom.javadsl.api.transport.Method;
  */
 public interface MessageStream extends Service {
 
-    ServiceCall<NotUsed, NotUsed, Source<SloackMessage, NotUsed>> stream();
+    ServiceCall< NotUsed, Source<SloackMessage, NotUsed>> stream();
 
-    ServiceCall<NotUsed, SloackMessage, NotUsed> message();
+    ServiceCall< SloackMessage, NotUsed> message();
 
     @Override
     default Descriptor descriptor() {
 
         return named("messageStream").with(
-                namedCall("/api/messagestream", stream()),
-                restCall(Method.POST, "/api/messages/", message())
+                namedCall("/api/messagestream", this::stream),
+                restCall(Method.POST, "/api/messages/", this::message)
 
         ).withAutoAcl(true);
     }

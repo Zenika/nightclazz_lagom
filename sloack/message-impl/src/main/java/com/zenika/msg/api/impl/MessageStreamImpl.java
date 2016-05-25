@@ -33,8 +33,8 @@ public class MessageStreamImpl implements MessageStream {
     }
 
     @Override
-    public ServiceCall<NotUsed, SloackMessage, NotUsed> message() {
-        return (id, message) -> {
+    public ServiceCall< SloackMessage, NotUsed> message() {
+        return (message) -> {
             final PubSubRef<SloackMessage> ref = pusub.refFor(TopicId.of(SloackMessage.class, TOPIC_ID));
             log.info("message :" + message);
             ref.publish(message);
@@ -43,8 +43,8 @@ public class MessageStreamImpl implements MessageStream {
     }
 
     @Override
-    public ServiceCall<NotUsed, NotUsed, Source<SloackMessage, NotUsed>> stream() {
-        return (id, message) -> {
+    public ServiceCall<NotUsed, Source<SloackMessage, NotUsed>> stream() {
+        return (message) -> {
             final PubSubRef<SloackMessage> ref = pusub.refFor(TopicId.of(SloackMessage.class, TOPIC_ID));
             return CompletableFuture.completedFuture(ref.subscriber());
 

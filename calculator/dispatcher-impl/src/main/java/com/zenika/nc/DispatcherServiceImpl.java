@@ -24,15 +24,15 @@ public class DispatcherServiceImpl implements DispatcherService {
     }
 
     @Override
-    public ServiceCall<String, Operandes, Integer> compute() {
+    public ServiceCall<Operandes, Integer> compute(String id) {
 
 
-        return (id, operandes) -> getService(id).invoke(NotUsed.getInstance(), operandes);
+        return (operandes) -> getService(id).invoke(operandes);
     }
 
 
-    private ServiceCall<NotUsed, Operandes, Integer> getService(String op) {
-        final ServiceCall<NotUsed, Operandes, Integer> r;
+    private ServiceCall<Operandes, Integer> getService(String op) {
+        final ServiceCall<Operandes, Integer> r;
         switch (op) {
             case "mult":
                 r = multService.op();

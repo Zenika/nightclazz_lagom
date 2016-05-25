@@ -4,7 +4,6 @@ import akka.NotUsed;
 import com.lightbend.lagom.javadsl.api.Descriptor;
 import com.lightbend.lagom.javadsl.api.Service;
 import com.lightbend.lagom.javadsl.api.ServiceCall;
-import com.lightbend.lagom.javadsl.api.deser.IdSerializers;
 
 import java.util.Arrays;
 
@@ -16,11 +15,11 @@ import static com.lightbend.lagom.javadsl.api.Service.pathCall;
  */
 public interface DispatcherService extends Service {
 
-    ServiceCall<String, Operandes, Integer> compute();
+    ServiceCall<Operandes, Integer> compute(String id);
 
     @Override
     default Descriptor descriptor() {
         return named("dispatcher")
-                .with(pathCall("/api/calculator/:op", compute())).withAutoAcl(true);
+                .with(Service.pathCall("/api/calculator/:op", this::compute)).withAutoAcl(true);
     }
 }
